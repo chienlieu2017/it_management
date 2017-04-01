@@ -24,7 +24,7 @@
 					<header>
 						<button name="button_send" states="draft" string="Send"
 							class="btn-primary" type="object" />
-						<button name="button_send" states="104,118,119,131" string="Re-Send"
+						<button name="button_send" states="103,104,118,119,131" string="Re-Send"
 							class="btn-primary" type="object" />
 						<field name="state" widget="statusbar"></field>
 					</header>
@@ -32,6 +32,7 @@
 						<group>
 							<field name="mobile_phone" />
 							<field name="message" />
+							<field name="sms_template_id" />
 						</group>
 						<group>
 							<field name="name" />

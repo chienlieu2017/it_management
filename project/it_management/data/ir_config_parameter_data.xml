@@ -12,5 +12,10 @@
 			<field name="value">F17FE00CC28A13E08116A72B756A9C</field>
 		</record>
 
+		<record id="sms_url" model="ir.config_parameter">
+			<field name="key">sms_url</field>
+			<field name="value">http://api.esms.vn/MainService.svc/xml/SendMultipleMessage_V2/</field>
+		</record>
+
 	</data>
 </odoo>

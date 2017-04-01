@@ -3,7 +3,7 @@
 	<data noupdate="0">
 
 		<record id="sms_template_default" model="sms.template">
-			<field name="name">sms_template_default</field>
+			<field name="name">New Report Issue Notification</field>
 			<field name="content">THÔNG BÁO CÓ REPORT ISSUE!</field>
 		</record>
 
