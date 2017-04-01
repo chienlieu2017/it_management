@@ -4,4 +4,5 @@
 #    Copyright 2009-2017 4Leaf Team
 #
 ##############################################################################
-import sms
+import sms_sms
+import sms_template

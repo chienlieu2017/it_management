@@ -28,6 +28,9 @@ IT Management Module
         # 'data/',
         'data/product_category_data.xml',
         'data/res_company_data.xml',
+        'data/ir_config_parameter_data.xml',
+        'data/ir_sequence_data.xml',
+        'data/sms_template_data.xml',
         # WIZARD
         # ============================================================
         # 'wizard/',
@@ -38,10 +41,13 @@ IT Management Module
         # VIEWS
         # ============================================================
         # 'view/',
+        'view/sms/sms_sms_view.xml',
+        'view/sms/sms_template_view.xml',
         # ============================================================
         # MENU
         # ============================================================
         # 'menu/',
+        'menu/menu_view.xml',
         # ============================================================
         # FUNCTION USED TO UPDATE DATA LIKE POST OBJECT
         # ============================================================

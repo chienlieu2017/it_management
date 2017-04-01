@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<menuitem id="sms_menu_root" name="SMS" />
+
+		<menuitem id="sms_sub_menu" parent="sms_menu_root"
+			name="SMS" sequence="0" />
+
+		<menuitem id="sms_menu_item" parent="sms_sub_menu"
+			name="Sent Message" action="sms_action" />
+
+		<menuitem id="sms_configuration_sub_menu" parent="sms_menu_root"
+			name="Configuration" sequence="0" />
+
+		<menuitem id="sms_template_menu_item" parent="sms_configuration_sub_menu"
+			name="SMS Template" action="sms_template_action" />
+
+	</data>
+</odoo>
