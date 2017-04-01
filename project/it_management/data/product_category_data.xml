@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="product_category_hw" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Hardware</field>
+        </record>
+        <record id="product_category_sw" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Software</field>
+        </record>
+
+    </data>
+</odoo>

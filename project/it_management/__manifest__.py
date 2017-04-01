@@ -14,17 +14,19 @@ IT Management Module
     'author': '4Leaf Team',
     'website': '',
     'depends': [
-        'base',
+        'mrp',
     ],
     'data': [
         # ============================================================
         # SECURITY SETTING - GROUP - PROFILE
         # ============================================================
         # 'security/',
+        'security/res_groups_data.xml',
         # ============================================================
         # DATA
         # ============================================================
         # 'data/',
+        'data/product_category_data.xml',
         'data/res_company_data.xml',
         # WIZARD
         # ============================================================
