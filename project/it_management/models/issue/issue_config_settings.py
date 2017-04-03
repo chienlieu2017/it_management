@@ -14,6 +14,29 @@ class IssueConfigSettings(models.TransientModel):
         'Receive Issue Mobile Phone Nb')
     is_raise_phone = fields.Boolean(
         'Send Notify SMS?')
+#     kpi_reopen_reduce = fields.Integer(
+#         'Reduced KPI When an Issue is Re-Open')
+
+#     @api.model
+#     def get_default_kpi_reopen_reduce(self, fields):
+#         """
+#         Read default value from system parameter
+#         """
+#         Param = self.env['ir.config_parameter']
+#         config = Param.get_param('kpi_reopen_reduce', '0')
+#         return {
+#             'kpi_reopen_reduce': eval(config),
+#         }
+# 
+#     @api.multi
+#     def set_default_kpi_reopen_reduce(self):
+#         """
+#         Update changing configurations to system parameter
+#         """
+#         self.ensure_one()
+#         Param = self.env['ir.config_parameter']
+#         config = self.kpi_reopen_reduce or '0'
+#         Param.set_param('kpi_reopen_reduce', config)
 
     @api.model
     def get_default_is_raise_phone(self, fields):

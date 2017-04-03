@@ -10,13 +10,15 @@
                         <button string="Apply" type="object" name="execute" class="oe_highlight"/>
                         <button string="Cancel" type="object" name="cancel" class="oe_link"/>
                     </header>
-                    <group string="Issue Countdown Time" name="issue">
+                    <group string="Issue Report" name="issue">
                         <field name="issue_report_count_down_time" />
+                        <!-- <field name="kpi_reopen_reduce" /> -->
                     </group>
                     <group string="Issue Receive Phone">
                     	<field name="is_raise_phone" />
                         <field name="issue_raise_phone" />
                     </group>
+                    
                 </form>
             </field>
         </record>

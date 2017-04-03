@@ -68,6 +68,9 @@ class IssueReport(models.Model):
         string='Status',
         track_visibility='onchange',
         default='draft')
+    kpi = fields.Integer(
+        string="KPI Coeficient",
+        default=100)
     comment_ids = fields.One2many(
         string="Comments",
         comodel_name="issue.comment",

@@ -75,6 +75,7 @@
 								<field name="create_date" />
 								<field name="date_done" />
 								<field name="count_down" />
+								<field name="kpi" />
 							</group>
 						</group>
 						<group>
