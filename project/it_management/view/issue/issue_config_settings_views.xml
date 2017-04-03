@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_issue_config" model="ir.ui.view">
+            <field name="name">issue settings</field>
+            <field name="model">issue.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Configure Issue Report" class= "oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <group string="Issue Countdown Time" name="issue">
+                        <field name="issue_report_count_down_time" />
+                    </group>
+                    <group string="Issue Receive Phone">
+                    	<field name="is_raise_phone" />
+                        <field name="issue_raise_phone" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_issue_report_tree">
+			<field name="name">issue.report.tree</field>
+			<field name="model">issue.report</field>
+			<field name="arch" type="xml">
+				<tree string="Report Issue">
+					<field name="summary" />
+					<field name="create_date" />
+					<field name="count_down" />
+					<field name="date_done" />
+					<field name="partner_id" />
+					<field name="create_uid" />
+					<field name="assignee_id" />
+					<field name="state" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_issue_report_form">
+			<field name="name">issue.report.form</field>
+			<field name="model">issue.report</field>
+			<field name="arch" type="xml">
+				<form string="Report Issue">
+					<header>
+						<button name="action_assign"
+                        	states="draft" string="Assign"
+                        	class="oe_highlight"
+                        	type="object"/>
+                        <button name="action_wip"
+                        	states="assign" string="Work in progress"
+                        	class="oe_highlight"
+                        	type="object"/>
+                        <button name="action_fix"
+                        	class="oe_highlight"
+                        	states="wip" string="Fixed"
+                        	type="object"/>
+                        <button name="action_confirm"
+                        	states="fix" string="Confirm"
+                        	class="oe_highlight"
+                        	type="object"/>
+                        <button name="action_close"
+                        	states="confirm" string="Close"
+                        	class="oe_highlight"
+                        	type="object"/>    
+                        <button name="action_reopen"
+                        	states="close" string="Re-open"
+                        	type="object"/>                      	
+                        <button name="action_cancel" type="object"
+                        	states="draft,assign,wip" string="Cancel"/>
+                        <button name="action_draft"
+                        	states="cancel" string="Set to Draft"
+                        	type="object"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,assign,wip,fix,confirm,close"
+							clickable="False" />
+					</header>
+					<sheet>
+					    <group>
+				            <h1 class="hidden-xs">
+				            	<label for="summary" string="Summary" class='oe_edit_only'/>
+                                <field name="summary" />
+                            </h1>
+					    </group>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="partner_id" />
+								<field name="assignee_id" />
+								<field name="create_uid" />
+							</group>
+							<group>
+								
+								<field name="estimated_time" />
+								<field name="create_date" />
+								<field name="date_done" />
+								<field name="count_down" />
+							</group>
+						</group>
+						<group>
+							<field name="description" />
+							<field name="feedback" />
+						</group>
+						<notebook>
+							<page string="Comment">
+								<group>
+									<field name="comment_ids" nolabel="1">
+										<tree default_order="create_date desc">
+											<field name="create_date"/>
+											<field name="create_uid"/>
+											<field name="reason"/>
+											<field name="solution"/>
+											<field name="time_spent"/>
+										</tree>
+										<form>
+											<group>
+												<group>
+													<field name="create_date"/>
+													<field name="reason" required="1"/>
+												</group>
+												<group>
+													<field name="create_uid"/>
+													<field name="time_spent" required="1"/>
+												</group>
+											</group>
+											<group>
+												<field name="solution" required="1"/>
+											</group>
+										</form>
+									</field>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_issue_report_search">
+			<field name="name">issue.report.search</field>
+			<field name="model">issue.report</field>
+			<field name="arch" type="xml">
+				<search string="Report Issue">
+					<field name="summary" />
+					<field name="partner_id" />
+					<field name="create_uid" />
+					<field name="assignee_id" />
+					<field name="state" />
+					<filter name="group_create_uid" string="Reporter" context="{'group_by':'create_uid'}" />
+					<filter name="group_assignee_id" string="Assignee" context="{'group_by':'assignee_id'}" />
+					<filter name="group_state" string="State" context="{'group_by':'state'}" />
+				</search>
+			</field>
+		</record>
+
+
+
+	</data>
+</openerp>

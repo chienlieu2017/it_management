@@ -12,5 +12,13 @@
 			<field eval="1" name="number_increment" />
 		</record>
 
+		<record id="sequence_issue_report_seq" model="ir.sequence">
+			<field name="name">Issue</field>
+			<field name="code">ISS</field>
+			<field name="prefix">RI-%(y)s-</field>
+			<field eval="4" name="padding" />
+			<field eval="1" name="number_next" />
+			<field eval="1" name="number_increment" />
+		</record>
 	</data>
 </odoo>

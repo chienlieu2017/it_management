@@ -4,7 +4,7 @@
 #    Copyright 2009-2017 4Leaf Team
 #
 ##############################################################################
-
+import unicodedata
 from odoo import api, fields, models
 import requests
 
@@ -52,6 +52,16 @@ class SmsSms(models.Model):
         vals.update({'name': next_sequence})
         return super(SmsSms, self).create(vals)
 
+    def convert_to_nomalize(self, name):
+        name_convert = ''.join((c for c in unicodedata.normalize('NFD', name)
+                                if unicodedata.category(c) != 'Mn'))
+        str_name_convert = name_convert.encode('utf8')
+        if 'Đ' in str_name_convert:
+            name_convert = str_name_convert.replace('Đ', 'D')
+        if 'đ' in str_name_convert:
+            name_convert = str_name_convert.replace('đ', 'd') 
+        return name_convert
+
     @api.multi
     def button_send(self):
         ApiKey = self.env['ir.config_parameter'].get_param('sms_api_key')
@@ -60,6 +70,7 @@ class SmsSms(models.Model):
         for sms in self:
             message = sms.sms_template_id and sms.sms_template_id.content + \
                 " " + sms.message or sms.message
+            message = self.convert_to_nomalize(message)
             sms_data = SmsXmlData % (ApiKey, SecretKey, message,
                                      sms.mobile_phone)
             r = requests.post(SmsUrl, data=sms_data)
