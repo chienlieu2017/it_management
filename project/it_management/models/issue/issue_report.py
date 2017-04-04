@@ -22,7 +22,7 @@ class IssueReport(models.Model):
     _description = "Report Issue"
 
     name = fields.Char(
-        string="Name",
+        string="Reference",
         default="/",
         readonly=True)
     estimated_time = fields.Float(
@@ -139,6 +139,12 @@ class IssueReport(models.Model):
         for r in self:
             if r.state in ('draft',):
                 r.state = 'assign'
+                if not r.assignee_id:
+                    continue
+                # send notify mail
+                xmlid = 'it_management.email_template_issue_report_assigned'
+                template = self.env.ref(xmlid)
+                template.send_mail(r.id, force_send=True)
 
     @api.multi
     def action_wip(self):

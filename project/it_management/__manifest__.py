@@ -26,6 +26,7 @@ IT Management Module
         # DATA
         # ============================================================
         # 'data/',
+        'data/email_template_data.xml',
         'data/product_category_data.xml',
         'data/res_company_data.xml',
         'data/ir_config_parameter_data.xml',
