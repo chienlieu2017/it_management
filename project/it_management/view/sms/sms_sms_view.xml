@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="sms_view_tree">
+			<field name="name">sms.view.tree</field>
+			<field name="model">sms.sms</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="mobile_phone" />
+					<field name="message" />
+					<field name="datetime_sent" />
+					<field name="name" />
+					<field name="state" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sms_view_form">
+			<field name="name">sms.view.form</field>
+			<field name="model">sms.sms</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<button name="button_send" states="draft" string="Send"
+							class="btn-primary" type="object" />
+						<button name="button_send" states="103,104,118,119,131" string="Re-Send"
+							class="btn-primary" type="object" />
+						<field name="state" widget="statusbar"></field>
+					</header>
+					<group>
+						<group>
+							<field name="mobile_phone" />
+							<field name="message" />
+							<field name="sms_template_id" />
+						</group>
+						<group>
+							<field name="name" />
+							<field name="datetime_sent" />
+							<field name="error_message" />
+						</group>
+					</group>
+					
+				</form>
+			</field>
+		</record>
+
+		<record id="sms_view_search" model="ir.ui.view">
+			<field name="name">sms.view.search</field>
+			<field name="model">sms.sms</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="mobile_phone" />
+					<field name="message" />
+					<field name="datetime_sent" />
+					<field name="name" />
+					<field name="state" />
+				</search>
+			</field>
+		</record>
+
+		<record id="sms_action" model="ir.actions.act_window">
+			<field name="name">SMS</field>
+			<field name="res_model">sms.sms</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+	</data>
+</odoo>
