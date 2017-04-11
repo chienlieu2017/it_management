@@ -17,5 +17,13 @@
 			<field name="value">http://api.esms.vn/MainService.svc/xml/SendMultipleMessage_V2/</field>
 		</record>
 
+		<record id="issue_report_count_down_time" model="ir.config_parameter">
+			<field name="key">issue_report_count_down_time</field>
+			<field name="value">30</field>
+		</record>
+		<record id="issue_report_issue_raise_phone" model="ir.config_parameter">
+			<field name="key">issue_raise_phone</field>
+			<field name="value">0</field>
+		</record>
 	</data>
 </odoo>

@@ -16,5 +16,31 @@
 		<menuitem id="sms_template_menu_item" parent="sms_configuration_sub_menu"
 			name="SMS Template" action="sms_template_action" />
 
+		<menuitem id="report_issue_menu_root" name="Report Issue" />
+
+		<menuitem id="report_issue_menu_sub" parent="report_issue_menu_root"
+			name="Report Issue" sequence="10" />
+
+		<record id="report_issue_window_act" model="ir.actions.act_window">
+			<field name="name">Report Issue</field>
+			<field name="res_model">issue.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="report_issue_menu_item" parent="report_issue_menu_sub"
+			name="Report Issue" action="report_issue_window_act" />
+        <record id="action_issue_configuration" model="ir.actions.act_window">
+            <field name="name">Configure Issue Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">issue.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="menu_issue_configuration" name="Configuration" parent="report_issue_menu_root"
+            sequence="100" groups="base.group_system"/>
+        <menuitem id="menu_issue_config_setting" name="Settings" parent="menu_issue_configuration"
+            sequence="10" action="action_issue_configuration" />
 	</data>
 </odoo>
