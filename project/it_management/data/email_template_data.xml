@@ -2,7 +2,7 @@
 <odoo>
     <data noupdate="0">
 
-        <!-- Email template for reset password -->
+        <!-- Email template assigning issue -->
         <record id="email_template_issue_report_assigned" model="mail.template">
             <field name="name">Assigned Ticket Notification</field>
             <field name="model_id" ref="it_management.model_issue_report"/>
@@ -27,5 +27,88 @@
 </div>
 			]]></field>
         </record>
+        
+        
+        <!-- Email template issue report -->
+        <record id="email_template_issue_report_daily" model="mail.template">
+            <field name="name">Issue Daily Report</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="email_from">${user.email or ''}</field>
+            <field name="email_to">${user.env['issue.report'].get_daily_report_recipient() or ''}</field>
+            <field name="subject">[Notification] Daily Issue Report</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: medium; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,</p>
+    
+    <p>Here are some statistics on report issue: </p>
+    
+    <p>Daily Statistics: </p>
+    
+    <style>
+    .table {
+	    border-collapse: collapse !important;
+	  }
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important;
+  }
+    </style>
+    
+    % set IssueReport = user.env['issue.report']
+    <table class="table table-bordered" style="width:600px">
+        <thead>
+            <tr>
+                <th style="text-align:center;vertical-align:middle;padding:15px 20px 0px 20px;">Status</th>
+                <th style="text-align:center;vertical-align:middle;padding:15px 20px 0px 20px;">Ratio</th>
+            </tr>
+        </thead>
+        <tbody>
+        	% set states = IssueReport.get_state_dict()
+        	% set d_ratios = IssueReport.get_ratio()
+        	% for k in states.keys():
+            <tr>
+                <td style="padding:15px 20px 0px 20px;">
+                    ${states[k]}
+                </td>
+                <td style="padding:15px 20px 0px 20px;">
+                    ${d_ratios.get(k)} %
+                </td>
+            </tr>
+            % endfor
+        </tbody>
+    </table>
+
+    <p>Monthly Statistics: </p>
+    
+    <table class="table table-bordered" style="width:600px;">
+        <thead>
+            <tr>
+                <th style="text-align:center;vertical-align:middle;padding:15px 20px 0px 20px;">Status</th>
+                <th style="text-align:center;vertical-align:middle;padding:15px 20px 0px 20px;">Ratio</th>
+            </tr>
+        </thead>    
+        <tbody>
+        	% set m_ratios = IssueReport.get_ratio(type='monthly')
+        	% for k in states.keys():
+            <tr>
+                <td style="padding:15px 20px 0px 20px;">
+                    ${states[k]}
+                </td>
+                <td style="padding:15px 20px 0px 20px;">
+                    ${m_ratios.get(k)} %
+                </td>
+            </tr>
+            % endfor
+        </tbody>
+    </table>    
+</div>
+			]]></field>
+        </record>        
     </data>
 </odoo>
