@@ -48,6 +48,7 @@ IT Management Module
         'view/issue/issue_report_view.xml',
         'view/sms/sms_sms_view.xml',
         'view/sms/sms_template_view.xml',
+        'view/network/network_map_view.xml',
         # ============================================================
         # MENU
         # ============================================================
