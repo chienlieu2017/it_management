@@ -11,7 +11,8 @@ class IssueConfigSettings(models.TransientModel):
     issue_report_count_down_time = fields.Float(
         'Report Issue Count Down Time')
     issue_raise_phone = fields.Char(
-        'Receive Issue Mobile Phone Nb')
+        'Receive Issue Mobile Phone Nb',
+        help="2 number is separated by `;`")
     is_raise_phone = fields.Boolean(
         'Send Notify SMS?')
 #     kpi_reopen_reduce = fields.Integer(

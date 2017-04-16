@@ -52,5 +52,7 @@
 
 		<menuitem id="network_map_menu_item" parent="network_sub_menu" name="Network Maps"
 			action="network_map_action" />
+		<menuitem id="report_issue_menu_customer" parent="report_issue_menu_sub"
+			name="Customer" sequence="100" action="base.action_partner_form" />
 	</data>
 </odoo>

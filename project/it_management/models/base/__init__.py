@@ -4,7 +4,4 @@
 #    Copyright 2009-2017 4Leaf Team
 #
 ##############################################################################
-import base
-import issue
-import sms
-import network
+import res_partner
