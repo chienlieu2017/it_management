@@ -4,11 +4,11 @@
 
 		<menuitem id="sms_menu_root" name="SMS" />
 
-		<menuitem id="sms_sub_menu" parent="sms_menu_root"
-			name="SMS" sequence="0" />
+		<menuitem id="sms_sub_menu" parent="sms_menu_root" name="SMS"
+			sequence="0" />
 
-		<menuitem id="sms_menu_item" parent="sms_sub_menu"
-			name="Sent Message" action="sms_action" />
+		<menuitem id="sms_menu_item" parent="sms_sub_menu" name="Sent Message"
+			action="sms_action" />
 
 		<menuitem id="sms_configuration_sub_menu" parent="sms_menu_root"
 			name="Configuration" sequence="0" />
@@ -30,17 +30,27 @@
 
 		<menuitem id="report_issue_menu_item" parent="report_issue_menu_sub"
 			name="Report Issue" action="report_issue_window_act" />
-        <record id="action_issue_configuration" model="ir.actions.act_window">
-            <field name="name">Configure Issue Report</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">issue.config.settings</field>
-            <field name="view_mode">form</field>
-            <field name="target">inline</field>
-        </record>
+		<record id="action_issue_configuration" model="ir.actions.act_window">
+			<field name="name">Configure Issue Report</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">issue.config.settings</field>
+			<field name="view_mode">form</field>
+			<field name="target">inline</field>
+		</record>
 
-        <menuitem id="menu_issue_configuration" name="Configuration" parent="report_issue_menu_root"
-            sequence="100" groups="base.group_system"/>
-        <menuitem id="menu_issue_config_setting" name="Settings" parent="menu_issue_configuration"
-            sequence="10" action="action_issue_configuration" />
+		<menuitem id="menu_issue_configuration" name="Configuration"
+			parent="report_issue_menu_root" sequence="100" groups="base.group_system" />
+		<menuitem id="menu_issue_config_setting" name="Settings"
+			parent="menu_issue_configuration" sequence="10"
+			action="action_issue_configuration" />
+
+		<!-- Network menu -->
+		<menuitem id="network_menu_root" name="Network" />
+
+		<menuitem id="network_sub_menu" parent="network_menu_root" name="Network"
+			sequence="0" />
+
+		<menuitem id="network_map_menu_item" parent="network_sub_menu" name="Network Maps"
+			action="network_map_action" />
 	</data>
 </odoo>
