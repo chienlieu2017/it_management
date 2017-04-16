@@ -20,6 +20,7 @@ class IssueReport(models.Model):
     _name = "issue.report"
     _inherit = ['mail.thread']
     _description = "Report Issue"
+    _order = 'id desc'
 
     name = fields.Char(
         string="Reference",
@@ -45,7 +46,7 @@ class IssueReport(models.Model):
     date_done = fields.Datetime(
         string="Completed Date",
         track_visibility='onchange')
-    description = fields.Text(
+    description = fields.Html(
         string="Description",
         track_visibility='onchange',)
     assignee_id = fields.Many2one(
@@ -61,7 +62,7 @@ class IssueReport(models.Model):
         string="Count Down",
         compute="_compute_count_down",
         track_visibility='onchange',)
-    feedback = fields.Text(
+    feedback = fields.Html(
         string="Feedback",
         track_visibility='onchange',)
     state = fields.Selection(RP_ISSUE_STATES,
@@ -112,15 +113,27 @@ class IssueReport(models.Model):
         except:
             send_notify = 0
         if send_notify:
-            mobile = Param.get_param('issue_raise_phone')
-            if mobile:
-                sms_tmpl = self.env.ref('it_management.sms_template_default')
+            mobile_str = Param.get_param('issue_raise_phone')
+            if not mobile_str:
+                return res
+            sms_tmpl = self.env.ref('it_management.sms_template_default')
+            mobiles = mobile_str.split(';')
+            for mobile in mobiles:
+                mobile = mobile.strip()
                 vals = {'sms_template_id': sms_tmpl.id,
                         'mobile_phone': mobile,
-                        'message': u'[{}] {}'.format(res.name, res.summary)}
+                        'message': u'[{}] {} (KH: {})'.format(res.name,
+                                                              res.summary,
+                                                              res.partner_id.name
+                                                              )}
                 sms = self.env['sms.sms'].create(vals)
                 sms.button_send()
         return res
+
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        if self.partner_id and self.partner_id.supporter_id:
+            self.assignee_id = self.partner_id.supporter_id
 
     @api.multi
     def action_cancel(self):

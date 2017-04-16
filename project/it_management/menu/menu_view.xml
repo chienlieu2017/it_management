@@ -30,6 +30,10 @@
 
 		<menuitem id="report_issue_menu_item" parent="report_issue_menu_sub"
 			name="Report Issue" action="report_issue_window_act" />
+
+		<menuitem id="report_issue_menu_customer" parent="report_issue_menu_sub"
+			name="Customer" sequence="100" action="base.action_partner_form" />
+			
         <record id="action_issue_configuration" model="ir.actions.act_window">
             <field name="name">Configure Issue Report</field>
             <field name="type">ir.actions.act_window</field>

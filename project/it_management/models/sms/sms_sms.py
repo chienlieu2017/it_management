@@ -9,6 +9,7 @@ from odoo import api, fields, models
 import requests
 
 SMS_STATES = [('draft', 'Draft'),
+              ('99', 'Invalid Phone NB'),
               ('100', 'Sent'),
               ('103', 'Empty Money'),
               ('104', 'No Brand Name'),
@@ -32,6 +33,7 @@ SmsXmlData = """<RQST>
 class SmsSms(models.Model):
     _name = "sms.sms"
     _description = "SMS"
+    _order = 'id desc'
 
     name = fields.Char('Name', readonly=True)
     sms_id = fields.Char('SMSID', readonly=True)
