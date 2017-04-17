@@ -43,6 +43,9 @@ IT Management Module
         # VIEWS
         # ============================================================
         # 'view/',
+        'view/access/access_system_view.xml',
+        'view/access/internet_provider_view.xml',
+        'view/access/web_service_view.xml',
         'view/base/res_partner_view.xml',
         'view/issue/issue_config_settings_views.xml',
         'view/issue/issue_report_view.xml',

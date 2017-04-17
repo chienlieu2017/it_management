@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_web_service_tree">
+			<field name="name">web.service.tree</field>
+			<field name="model">web.service</field>
+			<field name="arch" type="xml">
+				<tree string="Web Service">
+					<field name="name" />
+					<field name="ip_addr" />
+					<field name="panel" />
+					<field name="login" />
+					<field name="pwd" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_web_service_form">
+			<field name="name">web.service.form</field>
+			<field name="model">web.service</field>
+			<field name="arch" type="xml">
+				<form string="Web Service">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="ip_addr" />
+							</group>
+							<group>
+								<field name="panel" />
+								<field name="login" />
+								<field name="pwd" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_web_service_search">
+			<field name="name">web.service.search</field>
+			<field name="model">web.service</field>
+			<field name="arch" type="xml">
+				<search string="Web Service">
+					<field name="name" />
+					<field name="ip_addr" />
+					<field name="panel" />
+					<field name="login" />
+					<field name="pwd" />
+				</search>
+			</field>
+		</record>
+
+
+
+	</data>
+</openerp>
