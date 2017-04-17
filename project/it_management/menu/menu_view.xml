@@ -56,6 +56,61 @@
 
 		<menuitem id="report_issue_menu_customer" parent="report_issue_menu_sub"
 			name="Customer" sequence="100" action="base.action_partner_form" />
-			
+
+		<menuitem id="network_sub_menu_access" parent="network_menu_root" name="Access"
+			sequence="10" />
+
+		<!-- Access System -->
+		<record id="action_access_system" model="ir.actions.act_window">
+			<field name="name">Access System</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">access.system</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('type', '=', 'system')]</field>
+			<field name="context">{'default_type': 'system'}</field>
+		</record>
+		<menuitem id="network_sub_menu_access_system" parent="network_sub_menu_access" name="Access System"
+			sequence="10"	
+			action="action_access_system" />	
+
+		<!-- Access Server -->
+		<record id="action_access_server" model="ir.actions.act_window">
+			<field name="name">Access Server</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">access.system</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('type', '=', 'server')]</field>
+			<field name="context">{'default_type': 'server'}</field>
+		</record>
+		<menuitem id="network_sub_menu_access_server" parent="network_sub_menu_access" name="Access Server"
+			sequence="20"
+			action="action_access_server" />
+
+		<!-- Internet Provider -->
+		<record id="action_internet_provider" model="ir.actions.act_window">
+			<field name="name">Internet Provider</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">internet.provider</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<menuitem id="network_sub_menu_internet_provider" parent="network_sub_menu_access" name="Internet Provider"
+			sequence="30"
+			action="action_internet_provider" />
+
+		<!-- Web Service -->
+		<record id="action_web_service" model="ir.actions.act_window">
+			<field name="name">Web Service</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">web.service</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<menuitem id="network_sub_menu_web_service" parent="network_sub_menu_access" name="Web Service"
+			sequence="40"
+			action="action_web_service" />				
+				
 	</data>
 </odoo>

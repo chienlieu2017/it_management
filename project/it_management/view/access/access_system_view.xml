@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_access_system_tree">
+			<field name="name">access.system.tree</field>
+			<field name="model">access.system</field>
+			<field name="arch" type="xml">
+				<tree string="Access System">
+					<field name="name" />
+					<field name="remote_info" />
+					<field name="local_ip" />
+					<field name="login" />
+					<field name="password" />
+					<field name="remark" />
+					<field name="type" invisible="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_access_system_form">
+			<field name="name">access.system.form</field>
+			<field name="model">access.system</field>
+			<field name="arch" type="xml">
+				<form string="Access System">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="remote_info" />
+								<field name="local_ip" />
+								<field name="type" invisible="1"/>
+							</group>
+							<group>
+								<field name="login" />
+								<field name="password" />
+								<field name="remark" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_access_system_search">
+			<field name="name">access.system.search</field>
+			<field name="model">access.system</field>
+			<field name="arch" type="xml">
+				<search string="Access System">
+					<field name="name" />
+					<field name="remote_info" />
+					<field name="local_ip" />
+					<field name="login" />
+					<field name="password" />
+					<field name="remark" />
+				</search>
+			</field>
+		</record>
+
+
+
+	</data>
+</openerp>

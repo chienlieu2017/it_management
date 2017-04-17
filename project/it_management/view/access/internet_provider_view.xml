@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_internet_provider_tree">
+			<field name="name">internet.provider.tree</field>
+			<field name="model">internet.provider</field>
+			<field name="arch" type="xml">
+				<tree string="Internet Provider">
+					<field name="name" />
+					<field name="login" />
+					<field name="pwd" />
+					<field name="support_tel" />
+					<field name="connexion" />
+					<field name="connexion_type" />
+					<field name="speed" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_internet_provider_form">
+			<field name="name">internet.provider.form</field>
+			<field name="model">internet.provider</field>
+			<field name="arch" type="xml">
+				<form string="Internet Provider">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="login" />
+								<field name="pwd" />
+							</group>
+							<group>
+								<field name="support_tel" />
+								<field name="connexion" />
+								<field name="connexion_type" />
+								<field name="speed" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_internet_provider_search">
+			<field name="name">internet.provider.search</field>
+			<field name="model">internet.provider</field>
+			<field name="arch" type="xml">
+				<search string="Internet Provider">
+					<field name="name" />
+					<field name="login" />
+					<field name="pwd" />
+					<field name="support_tel" />
+					<field name="connexion" />
+					<field name="connexion_type" />
+					<field name="speed" />
+				</search>
+			</field>
+		</record>
+
+
+
+	</data>
+</openerp>
