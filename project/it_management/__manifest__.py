@@ -15,6 +15,7 @@ IT Management Module
     'website': '',
     'depends': [
         'mrp',
+        'document',
         'report_xlsx'
     ],
     'data': [
@@ -55,6 +56,7 @@ IT Management Module
         'view/sms/sms_sms_view.xml',
         'view/sms/sms_template_view.xml',
         'view/network/network_map_view.xml',
+        'view/contract/partner_contract_view.xml',
         'view/product/product_category_view.xml',
         # ============================================================
         # MENU
