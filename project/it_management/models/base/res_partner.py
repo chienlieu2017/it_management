@@ -14,3 +14,7 @@ class ResPartner(models.Model):
     supporter_id = fields.Many2one(
         string="Supporter",
         comodel_name="res.users")
+
+    department_id = fields.Many2one(
+        string="Department",
+        comodel_name="res.partner.department")
