@@ -15,6 +15,7 @@ IT Management Module
     'website': '',
     'depends': [
         'mrp',
+        'report_xlsx'
     ],
     'data': [
         # ============================================================
@@ -40,6 +41,7 @@ IT Management Module
         # ============================================================
         # 'report/',
         # ============================================================
+        'report/monthly_issue_report_xlsx.xml',
         # VIEWS
         # ============================================================
         # 'view/',
@@ -47,11 +49,13 @@ IT Management Module
         'view/access/internet_provider_view.xml',
         'view/access/web_service_view.xml',
         'view/base/res_partner_view.xml',
-        'view/issue/issue_config_settings_views.xml',
+        'view/issue/issue_config_settings_view.xml',
         'view/issue/issue_report_view.xml',
+        'view/issue/month_report_issue_view.xml',
         'view/sms/sms_sms_view.xml',
         'view/sms/sms_template_view.xml',
         'view/network/network_map_view.xml',
+        'view/product/product_category_view.xml',
         # ============================================================
         # MENU
         # ============================================================

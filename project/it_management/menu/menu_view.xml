@@ -19,7 +19,7 @@
 		<menuitem id="report_issue_menu_root" name="Report Issue" />
 
 		<menuitem id="report_issue_menu_sub" parent="report_issue_menu_root"
-			name="Report Issue" sequence="10" />
+			name="Issue" sequence="10" />
 
 		<record id="report_issue_window_act" model="ir.actions.act_window">
 			<field name="name">Report Issue</field>
@@ -30,6 +30,20 @@
 
 		<menuitem id="report_issue_menu_item" parent="report_issue_menu_sub"
 			name="Report Issue" action="report_issue_window_act" />
+
+		<menuitem id="report_issue_menu_sub_report" parent="report_issue_menu_root"
+			name="Report" sequence="20" />
+
+		<record id="month_report_issue_window_act" model="ir.actions.act_window">
+			<field name="name">Monthly Report Issue</field>
+			<field name="res_model">monthly.report.issue</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem id="report_issue_menu_sub_report_monthly" parent="report_issue_menu_sub_report"
+			name="Monthly Report Issue" action="month_report_issue_window_act" />
 
 		<record id="action_issue_configuration" model="ir.actions.act_window">
 			<field name="name">Configure Issue Report</field>
