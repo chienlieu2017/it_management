@@ -14,7 +14,7 @@ IT Management Module
     'author': '4Leaf Team',
     'website': '',
     'depends': [
-        'mrp',
+        'mrp', 'document',
     ],
     'data': [
         # ============================================================
@@ -52,6 +52,7 @@ IT Management Module
         'view/sms/sms_sms_view.xml',
         'view/sms/sms_template_view.xml',
         'view/network/network_map_view.xml',
+        'view/contract/partner_contract_view.xml',
         # ============================================================
         # MENU
         # ============================================================

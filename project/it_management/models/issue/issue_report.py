@@ -7,7 +7,6 @@
 from datetime import timedelta, datetime
 from odoo import api, fields, models
 
-
 RP_ISSUE_STATES = [('draft', 'Draft'),
                    ('assign', 'Assigned'),
                    ('wip', 'WIP'),
@@ -15,6 +14,7 @@ RP_ISSUE_STATES = [('draft', 'Draft'),
                    ('confirm', 'Customer Confirmed'),
                    ('close', 'Closed'),
                    ('cancel', 'Cancelled')]
+
 
 class IssueReport(models.Model):
     _name = "issue.report"
@@ -92,7 +92,7 @@ class IssueReport(models.Model):
                 mins = int(secs/60)
                 val = countdown - mins
             r.count_down = val
-    
+
     @api.model
     def _get_count_down_time(self):
         Parameter = self.env['ir.config_parameter'].sudo()
@@ -248,7 +248,6 @@ class IssueReport(models.Model):
                     emails.append(u.email)
             res = emails and ', '.join(emails) or ''
         return res
-        
 
     @api.model
     def _send_issue_statistics(self):

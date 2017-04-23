@@ -109,7 +109,11 @@
 		</record>
 		<menuitem id="network_sub_menu_web_service" parent="network_sub_menu_access" name="Web Service"
 			sequence="40"
-			action="action_web_service" />				
-				
+			action="action_web_service" />
+
+		<!-- Customer Contract -->
+		<menuitem id="report_issue_menu_customer_contract" parent="report_issue_menu_sub"
+			name="Customer Contract" sequence="100" action="partner_contract_action" />
+
 	</data>
 </odoo>
