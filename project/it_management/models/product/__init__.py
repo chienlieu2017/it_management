@@ -4,4 +4,4 @@
 #    Copyright 2009-2017 4Leaf Team
 #
 ##############################################################################
-import product_category
+import product_product

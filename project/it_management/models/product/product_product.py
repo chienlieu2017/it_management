@@ -8,9 +8,7 @@
 from odoo import fields, models
 
 
-class ResPartnerDepartment(models.Model):
-    _name = "res.partner.department"
-    _description = "Department of Customer"
+class ProductProduct(models.Model):
+    _inherit = "product.product"
 
-    name = fields.Char(
-        string="Name")
+    partner_id = fields.Many2one('res.partner', 'Partner')

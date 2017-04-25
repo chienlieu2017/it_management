@@ -34,11 +34,6 @@ class IssueReport(models.Model):
         track_visibility='onchange',
         comodel_name="res.partner",
         required=True)
-    product_id = fields.Many2one(
-        string="Current",
-        track_visibility='onchange',
-        comodel_name="product.product",
-        required=True)    
     summary = fields.Char(
         string="Summary",
         track_visibility='onchange',
@@ -82,9 +77,6 @@ class IssueReport(models.Model):
         comodel_name="issue.comment",
         inverse_name="issue_id"
         )
-    department_id = fields.Many2one(
-        string="Department",
-        comodel_name="res.partner.department")
 
     @api.multi
     def _compute_count_down(self):
@@ -99,8 +91,8 @@ class IssueReport(models.Model):
                 secs = diff.total_seconds()
                 mins = int(secs/60)
                 val = countdown - mins
-            r.count_down = val > 0.0 and val or 0.0
-    
+            r.count_down = val
+
     @api.model
     def _get_count_down_time(self):
         Parameter = self.env['ir.config_parameter'].sudo()
@@ -140,11 +132,8 @@ class IssueReport(models.Model):
 
     @api.onchange('partner_id')
     def onchange_partner_id(self):
-        if self.partner_id:
-            if self.partner_id.supporter_id:
-                self.assignee_id = self.partner_id.supporter_id
-            if self.partner_id.department_id:
-                self.department_id = self.partner_id.department_id
+        if self.partner_id and self.partner_id.supporter_id:
+            self.assignee_id = self.partner_id.supporter_id
 
     @api.multi
     def action_cancel(self):

@@ -20,6 +20,7 @@ SMS_STATES = [('draft', 'Draft'),
 SmsXmlData = """<RQST>
                 <APIKEY>%s</APIKEY>
                 <SECRETKEY>%s</SECRETKEY>
+                <SMSTYPE>4</SMSTYPE>
                 <NAME>HMS Esms</NAME>
                 <CONTENT>%s</CONTENT>
                 <CONTACTS>
@@ -61,7 +62,7 @@ class SmsSms(models.Model):
         if 'Đ' in str_name_convert:
             name_convert = str_name_convert.replace('Đ', 'D')
         if 'đ' in str_name_convert:
-            name_convert = str_name_convert.replace('đ', 'd') 
+            name_convert = str_name_convert.replace('đ', 'd')
         return name_convert
 
     @api.multi

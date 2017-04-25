@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data noupdate="1">
-        <record id="base.main_company" model="res.company">
-            <field name="name">Công Ty TNHH TM - DV Hệ Thống Máy Tính Hải Minh (HMS).</field>
-            <field name="currency_id" ref="base.VND"/>
-            <field name="street">18/41 Trần Quang Diệu, F.14, Q.3, TP. Hồ Chí Minh</field>
-            <field name="email">info@hms.vn</field>
-            <field name="phone">(08) 373010179</field>
-            <field name="logo" type="base64" file="it_management/static/src/img/logo.png" ></field>
-        </record>
+
+		<record id="base.main_company" model="res.company">
+			<field name="name">Công ty Cổ Phần công nghệ SVtek</field>
+			<field name="currency_id" ref="base.VND" />
+			<field name="street">14D1 Thảo Điền, Phường Thảo Điền, Quận 2, Thành phố
+				Hồ Chí Minh</field>
+			<field name="email">info@svtek.vn</field>
+			<field name="phone">1900.0034</field>
+			<field name="logo" type="base64" file="it_management/static/src/img/logo.png"></field>
+		</record>
+
 	</data>
 </odoo>
