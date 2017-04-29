@@ -8,7 +8,9 @@
 from odoo import fields, models
 
 
-class ProductProduct(models.Model):
-    _inherit = "product.product"
+class ProductTemplate(models.Model):
+    _inherit = "product.template"
 
     partner_id = fields.Many2one('res.partner', 'Partner')
+    is_warning = fields.Boolean('Warning')
+    warning_message = fields.Text('Warning Message')

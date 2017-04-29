@@ -33,7 +33,7 @@ class IssueReport(models.Model):
         string="Customer",
         track_visibility='onchange',
         comodel_name="res.partner",
-        required=True)
+        required=True, default=lambda self: self.env.user.partner_id.id)
     summary = fields.Char(
         string="Summary",
         track_visibility='onchange',
@@ -52,7 +52,8 @@ class IssueReport(models.Model):
     assignee_id = fields.Many2one(
         string="Assigned to",
         comodel_name="res.users",
-        track_visibility='onchange',)
+        track_visibility='onchange',
+        default=lambda self: self.env.user.partner_id.supporter_id.id)
     create_uid = fields.Many2one(
         string="Reporter",
         comodel_name="res.users",
@@ -61,7 +62,7 @@ class IssueReport(models.Model):
     count_down = fields.Float(
         string="Count Down",
         compute="_compute_count_down",
-        track_visibility='onchange',)
+        track_visibility='onchange', store=True)
     feedback = fields.Html(
         string="Feedback",
         track_visibility='onchange',)
