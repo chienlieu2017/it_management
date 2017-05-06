@@ -27,18 +27,22 @@
 						<button name="action_assign"
                         	states="draft" string="Assign"
                         	class="oe_highlight"
+                        	groups="it_management.group_it_technical,it_management.group_it_supporter"
                         	type="object"/>
                         <button name="action_wip"
                         	states="assign" string="Work in progress"
                         	class="oe_highlight"
+                        	groups="it_management.group_it_technical,it_management.group_it_supporter"
                         	type="object"/>
                         <button name="action_fix"
                         	class="oe_highlight"
                         	states="wip" string="Fixed"
+                        	groups="it_management.group_it_technical,it_management.group_it_supporter"
                         	type="object"/>
                         <button name="action_confirm"
                         	states="fix" string="Confirm"
                         	class="oe_highlight"
+                        	groups="it_management.group_it_technical,it_management.group_it_supporter"
                         	type="object"/>
                         <button name="action_close"
                         	states="confirm" string="Close"
@@ -131,9 +135,13 @@
 					<field name="create_uid" />
 					<field name="assignee_id" />
 					<field name="state" />
-					<filter name="group_create_uid" string="Reporter" context="{'group_by':'create_uid'}" />
-					<filter name="group_assignee_id" string="Assignee" context="{'group_by':'assignee_id'}" />
-					<filter name="group_state" string="State" context="{'group_by':'state'}" />
+					<filter name="filter_my_issue" string="My Issue" domain="[('assignee_id', '=', uid)]" />
+					<filter name="filter_report_by_me" string="Reported by Me" domain="[('create_uid', '=', uid)]" />
+					<group expand="0" string="Group By">
+						<filter name="group_create_uid" string="Reporter" context="{'group_by':'create_uid'}" />
+						<filter name="group_assignee_id" string="Assignee" context="{'group_by':'assignee_id'}" />
+						<filter name="group_state" string="State" context="{'group_by':'state'}" />
+					</group>
 				</search>
 			</field>
 		</record>

@@ -2,7 +2,7 @@
 <odoo>
 	<data>
 
-		<menuitem id="sms_menu_root" name="SMS" />
+		<menuitem id="sms_menu_root" name="SMS" groups="group_it_sms"/>
 
 		<menuitem id="sms_sub_menu" parent="sms_menu_root" name="SMS"
 			sequence="0" />
@@ -26,6 +26,7 @@
 			<field name="res_model">issue.report</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_filter_my_issue': True, 'search_default_filter_report_by_me': True}</field>
 		</record>
 
 		<menuitem id="report_issue_menu_item" parent="report_issue_menu_sub"
@@ -38,10 +39,10 @@
 			<field name="target">inline</field>
 		</record>
 
-		<menuitem id="menu_issue_configuration" name="Configuration"
-			parent="report_issue_menu_root" sequence="100" groups="base.group_system" />
+		<menuitem id="menu_issue_config" name="Configuration"
+			parent="report_issue_menu_root" sequence="100" />
 		<menuitem id="menu_issue_config_setting" name="Settings"
-			parent="menu_issue_configuration" sequence="10"
+			parent="menu_issue_config" sequence="10"
 			action="action_issue_configuration" />
 
 		<!-- Network menu -->

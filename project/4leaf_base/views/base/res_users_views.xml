@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<record id="base_view_users_form_4leaf_inherit" model="ir.ui.view">
+			<field name="name">base_view_users_form_4leaf_inherit</field>
+			<field name="model">res.users</field>
+			<field name="inherit_id" ref="base.view_users_form" />
+			<field name="arch" type="xml">
+				<field name="partner_id" position="after">
+					<field name="profile_id" groups="base.group_no_one"
+						domain="[('category_id.name', '=', 'Profiles')]"/>
+				</field>
+			</field>
+		</record>
+
+	</data>
+</openerp>
