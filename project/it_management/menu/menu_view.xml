@@ -39,10 +39,10 @@
 			<field name="target">inline</field>
 		</record>
 
-		<menuitem id="menu_issue_config" name="Configuration"
-			parent="report_issue_menu_root" sequence="100" />
+		<menuitem id="menu_issue_configuration" name="Configuration"
+			parent="report_issue_menu_root" sequence="100" groups="base.group_system" />
 		<menuitem id="menu_issue_config_setting" name="Settings"
-			parent="menu_issue_config" sequence="10"
+			parent="menu_issue_configuration" sequence="10"
 			action="action_issue_configuration" />
 
 		<!-- Network menu -->
