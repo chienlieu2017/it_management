@@ -8,9 +8,9 @@
 from odoo import fields, models
 
 
-class ResPartnerDepartment(models.Model):
-    _name = "res.partner.department"
-    _description = "Department of Customer"
+class ProductTemplate(models.Model):
+    _inherit = "product.template"
 
-    name = fields.Char(
-        string="Name")
+    partner_id = fields.Many2one('res.partner', 'Partner')
+    is_warning = fields.Boolean('Warning')
+    warning_message = fields.Text('Warning Message')

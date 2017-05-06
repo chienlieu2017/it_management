@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
-        <record id="view_res_partner_issue_form" model="ir.ui.view">
-            <field name="name">view_res_partner_issue_form</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="arch" type="xml">
-                <field name="parent_id" position="after">
-                    <field name="supporter_id" placeholder="Supporter" />
-                </field>
-                <field name="function" position="before">
-                    <field name="department_id" />
-                </field>
-            </field>
-        </record>
+
+		<record id="view_res_partner_issue_form" model="ir.ui.view">
+			<field name="name">view_res_partner_issue_form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<field name="parent_id" position="after">
+					<field name="supporter_id" placeholder="Supporter" />
+				</field>
+				<xpath expr="//notebook" position="inside">
+					<page string="Devices">
+						<field name="product_ids" >
+							<tree editable="top">
+								<field name="default_code" />
+								<field name="name" />
+								<field name="categ_id" />
+							</tree>
+						</field>
+					</page>
+					<page string="Folders">
+						<field name="data_folder_ids" >
+							<tree editable="top">
+								<field name="name" />
+								<field name="parent_id" />
+							</tree>
+						</field>
+					</page>
+				</xpath>
+			</field>
+		</record>
+
 	</data>
 </openerp>

@@ -33,9 +33,10 @@
 							<group>
 								<field name="login" />
 								<field name="password" />
-								<field name="remark" />
 							</group>
 						</group>
+						<sparator string="Remark" />
+						<field name="remark" />
 					</sheet>
 				</form>
 			</field>
@@ -55,8 +56,6 @@
 				</search>
 			</field>
 		</record>
-
-
 
 	</data>
 </openerp>
