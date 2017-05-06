@@ -36,3 +36,4 @@ class DataFolder(models.Model):
         compute='_compute_display_name'
     )
     parent_id = fields.Many2one('data.folder', 'Parent')
+    description = fields.Html('Description')
