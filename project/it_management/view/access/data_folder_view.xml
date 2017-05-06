@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="data_folder_view_tree">
+			<field name="name">data.folder.view.tree</field>
+			<field name="model">data.folder</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="parent_id" />
+					<field name="name" />
+					<field name="company_id" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="data_folder_view_form">
+			<field name="name">data.folder.view.form</field>
+			<field name="model">data.folder</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+					<h1>
+						<label string="Name" for="name"></label>
+						<field name="name" />
+					</h1>
+					<group>
+						<group>
+							<field name="parent_id" />
+							<field name="name" />
+							
+						</group>
+						<group>
+							<field name="company_id" />
+						</group>
+					</group>
+					<separator string="Description"></separator>
+					<field name="description" />
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="data_folder_view_search" model="ir.ui.view">
+			<field name="name">data.folder.view.search</field>
+			<field name="model">data.folder</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="parent_id" />
+					<field name="name" />
+					<field name="company_id" />
+					<filter name="group_parent" string="Parent" context="{'group_by':'parent_id'}" />
+					<filter name="group_company" string="Customer" context="{'group_by':'company_id'}" />
+				</search>
+			</field>
+		</record>
+
+		<record id="data_folder_action" model="ir.actions.act_window">
+			<field name="name">Data Folder</field>
+			<field name="res_model">data.folder</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+	</data>
+</odoo>

@@ -118,6 +118,9 @@
 		<menuitem id="data_right_access_sub_menu" parent="network_sub_menu_access" name="Data right access"
 			sequence="40"
 			action="data_right_access_action" />
+		<menuitem id="data_folders_sub_menu" parent="network_sub_menu_access" name="Data Folders"
+			sequence="40"
+			action="data_folder_action" />
 
 		<!-- Customer Contract -->
 		<menuitem id="report_issue_menu_customer_contract" parent="report_issue_menu_sub"
