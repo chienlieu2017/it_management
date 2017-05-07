@@ -16,3 +16,6 @@ class ResPartner(models.Model):
         comodel_name="res.users")
     data_folder_ids = fields.One2many('data.folder', 'company_id', 'Folders')
     product_ids = fields.One2many('product.product', 'partner_id', 'Devices')
+    department_id = fields.Many2one(
+        string="Department",
+        comodel_name="res.partner.department")

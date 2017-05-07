@@ -4,5 +4,5 @@
 #    Copyright 2009-2017 4Leaf Team
 #
 ##############################################################################
-import product_template
-import product_category
+
+import monthly_issue_report_xlsx

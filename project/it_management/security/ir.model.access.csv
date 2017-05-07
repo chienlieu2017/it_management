@@ -6,6 +6,8 @@ it_all_sms_template,it_user_sms_template,model_sms_template,,1,0,0,0
 it_all_stock_order_point,it_all_stock_order_point,stock.model_stock_warehouse_orderpoint,,1,0,0,0
 it_all_stock_move,it_all_stock_move,stock.model_stock_move,,1,0,0,0
 it_all_data_folder,it_all_data_folder,model_data_folder,,1,0,0,0
+it_all_res_partner_department,it_all_res_partner_department,model_res_partner_department,,1,1,1,0
+it_all_product_category,it_all_product_category,product.model_product_category,,1,1,1,0
 
 it_group_it_access_network_access_system,it_group_it_access_network_access_system,model_access_system,group_it_access_network,1,1,1,1
 it_group_it_access_network_data_folder,it_group_it_access_network_data_folder,model_data_folder,group_it_access_network,1,1,1,1
