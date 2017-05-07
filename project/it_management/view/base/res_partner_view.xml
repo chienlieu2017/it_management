@@ -10,6 +10,9 @@
 				<field name="parent_id" position="after">
 					<field name="supporter_id" placeholder="Supporter" />
 				</field>
+				<field name="function" position="before">
+ 					<field name="department_id" />
+ 				</field>
 				<xpath expr="//notebook" position="inside">
 					<page string="Devices">
 						<field name="product_ids" >

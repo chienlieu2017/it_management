@@ -7,3 +7,4 @@
 import issue_comment
 import issue_config_settings
 import issue_report
+import monthly_report_issue
