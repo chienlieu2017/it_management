@@ -64,6 +64,8 @@ IT Management Module
         'view/contract/partner_contract_view.xml',
         'view/product/product_template_view.xml',
         'view/product/product_category_view.xml',
+        'view/base/web_template.xml',
+        'view/base/qweb.xml',
         # ============================================================
         # MENU
         # ============================================================
@@ -77,7 +79,10 @@ IT Management Module
 
     'test': [],
     'demo': [],
-
+    'qweb': [
+        'static/src/xml/web_dialog_size.xml',
+        'view/base_view.xml',
+    ],
     'installable': True,
     'active': False,
     'application': True,
