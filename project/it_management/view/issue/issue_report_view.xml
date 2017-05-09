@@ -5,7 +5,7 @@
 			<field name="name">issue.report.tree</field>
 			<field name="model">issue.report</field>
 			<field name="arch" type="xml">
-				<tree string="Report Issue" colors="red:is_over">
+				<tree string="Report Issue" colors="red:is_over; blue: state=='close';">
 					<field name="summary" />
 					<field name="create_date" />
 					<field name="count_down" />
