@@ -44,6 +44,9 @@ IT Management Module
         # REPORT
         # ============================================================
         # 'report/',
+        'report/report_paper_format.xml',
+        'report/monthly_data_access_right_report.xml',
+        'report/monthly_device_report.xml',
         'report/monthly_issue_report_xlsx.xml',
         # ============================================================
         # VIEWS
@@ -55,9 +58,9 @@ IT Management Module
         'view/access/data_right_access_view.xml',
         'view/access/data_folder_view.xml',
         'view/base/res_partner_view.xml',
+        'view/base/month_report_view.xml',
         'view/issue/issue_config_settings_views.xml',
         'view/issue/issue_report_view.xml',
-        'view/issue/month_report_issue_view.xml',
         'view/sms/sms_sms_view.xml',
         'view/sms/sms_template_view.xml',
         'view/network/network_map_view.xml',

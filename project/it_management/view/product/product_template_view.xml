@@ -11,6 +11,7 @@
 					<page string="Customer">
 						<group>
 							<field name="partner_id"></field>
+							<field name="contact_partner_id"></field>
 							<field name="is_warning"></field>
 							<field name="warning_message"></field>
 						</group>
@@ -26,6 +27,7 @@
 			<field name="arch" type="xml">
 				<field name="name" position="after">
 					<field name="partner_id"></field>
+					<field name="contact_partner_id"></field>
 				</field>
 			</field>
 		</record>

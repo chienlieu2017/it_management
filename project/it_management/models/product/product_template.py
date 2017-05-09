@@ -12,5 +12,6 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     partner_id = fields.Many2one('res.partner', 'Partner')
+    contact_partner_id = fields.Many2one('res.partner', 'Employee')
     is_warning = fields.Boolean('Warning')
     warning_message = fields.Text('Warning Message')

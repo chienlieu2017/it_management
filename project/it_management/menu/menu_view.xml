@@ -50,14 +50,27 @@
 
 		<record id="month_report_issue_window_act" model="ir.actions.act_window">
 			<field name="name">Monthly Report Issue</field>
-			<field name="res_model">monthly.report.issue</field>
+			<field name="res_model">monthly.report</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">form</field>
 			<field name="target">new</field>
+			<field name="context">{'report_template': 'monthly_issue_report_xlsx'}</field>
 		</record>
 
 		<menuitem id="report_issue_menu_sub_report_monthly" parent="report_issue_menu_sub_report"
 			name="Monthly Report Issue" action="month_report_issue_window_act" />
+
+		<record id="month_report_device_window_act" model="ir.actions.act_window">
+			<field name="name">Monthly Devices / Software</field>
+			<field name="res_model">monthly.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="context">{'report_template': 'it_management.monthly_device_report_template'}</field>
+		</record>
+
+		<menuitem id="report_issue_menu_sub_report_monthly_device" parent="report_issue_menu_sub_report"
+			name="Monthly Devices / Software" action="month_report_device_window_act" />
 
 		<!-- Network menu -->
 		<menuitem id="network_menu_root" name="Network" />
@@ -70,6 +83,9 @@
 
 		<menuitem id="network_sub_menu_access" parent="network_menu_root" name="Access"
 			sequence="10" />
+
+		<menuitem id="network_sub_menu_report" parent="network_menu_root"
+			name="Report" sequence="20" />
 
 		<menuitem id="report_issue_menu_customer" parent="report_issue_menu_sub"
 			name="Customer" sequence="100" action="base.action_partner_form" />
@@ -139,6 +155,18 @@
 		<!-- Customer Contract -->
 		<menuitem id="report_issue_menu_customer_contract" parent="report_issue_menu_sub"
 			name="Customer Contract" sequence="100" action="partner_contract_action" />
+
+		<record id="month_data_access_right_report_window_act" model="ir.actions.act_window">
+			<field name="name">Monthly Data Access Right</field>
+			<field name="res_model">monthly.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="context">{'report_template': 'it_management.monthly_data_access_right_report_template'}</field>
+		</record>
+
+		<menuitem id="network_sub_menu_report_month_data_right" parent="network_sub_menu_report"
+			name="Monthly Data Access Right" action="month_data_access_right_report_window_act" />
 
 	</data>
 </odoo>

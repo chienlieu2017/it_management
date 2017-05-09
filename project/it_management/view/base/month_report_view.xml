@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_monthly_report" model="ir.ui.view">
+			<field name="name">view_monthly_report</field>
+			<field name="model">monthly.report</field>
+			<field name="arch" type="xml">
+				<form string="Monthly Report Issue">
+					<group>
+						<group>
+	                        <label for="year_nb" string="Month"/>
+	                        <div>
+	                        	<field name="month_nb" nolabel="1" class="oe_inline"/>
+	                            <field name="year_nb" nolabel="1" class="oe_inline"/>
+	                        </div>
+	                        <field name="customer_id" />
+	                    </group>
+					</group>
+					<footer>
+						<button string="Print Report" name="btn_print"
+							class="oe_highlight" type="object" />
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+
+				</form>
+			</field>
+		</record>
+
+	</data>
+</odoo>

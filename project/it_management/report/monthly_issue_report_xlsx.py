@@ -120,6 +120,9 @@ class MonthlyIssueReportXlsx(ReportXlsx):
     def get_datas(self, data):
         from_date = data.get('from_date')
         to_date = data.get('to_date')
+        customer_id = data.get('customer_id')
+        partner_domain = customer_id and \
+            'AND ir.partner_id = {}'.format(customer_id) or ''
         sql = '''
         SELECT rpd.name,
             CASE WHEN pp.default_code ISNULL
@@ -167,10 +170,11 @@ class MonthlyIssueReportXlsx(ReportXlsx):
             ON rp2.id = ru.partner_id
         WHERE state != 'cancel'
             AND ir.create_date BETWEEN '{0}' AND '{1}'
-        '''.format(from_date, to_date)
+            {2}
+        '''.format(from_date, to_date, partner_domain)
         self.env.cr.execute(sql)
         res = self.env.cr.fetchall()
         return res
 
 MonthlyIssueReportXlsx('report.monthly_issue_report_xlsx',
-                         'monthly.report.issue')
+                         'monthly.report')
