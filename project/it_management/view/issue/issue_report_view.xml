@@ -5,15 +5,17 @@
 			<field name="name">issue.report.tree</field>
 			<field name="model">issue.report</field>
 			<field name="arch" type="xml">
-				<tree string="Report Issue">
+				<tree string="Report Issue" colors="red:is_over">
 					<field name="summary" />
 					<field name="create_date" />
 					<field name="count_down" />
+					<field name="remaining_time" ></field>
 					<field name="date_done" />
 					<field name="partner_id" />
 					<field name="create_uid" />
 					<field name="assignee_id" />
 					<field name="state" />
+					<field name="is_over" ></field>
 				</tree>
 			</field>
 		</record>
@@ -53,35 +55,60 @@
 						<group>
 							<h1 class="hidden-xs">
 								<label for="summary" string="Summary" class='oe_edit_only' />
-								<field name="summary" />
+								<field name="summary"
+									attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
 							</h1>
 						</group>
 						<group>
 							<group>
-								<field name="name" />
-								<field name="partner_id" />
-								<field name="department_id" required="1" />
-								<field name="product_id" />
-								<field name="assignee_id" />
+								<field name="name" readonly="1" />
+								<field name="partner_id"
+									attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
+								<field name="department_id" required="1"
+									attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
+								<field name="product_id"
+									attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
+								<field name="assignee_id"
+									attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
 								<field name="create_uid" />
 							</group>
 							<group>
-
-								<field name="estimated_time" groups="it_management.group_it_technical,it_management.group_it_supporter"/>
+								<label for="estimated_time" />
+								<div>
+									<field name="estimated_time"
+										attrs="{'readonly': [('state', 'in', ['close','cancel'])]}"
+										groups="it_management.group_it_technical,it_management.group_it_supporter"
+										 class="oe_inline" widget="float_time"/> hours
+								</div>
 								<field name="create_date" />
-								<field name="date_done" />
-								<field name="count_down" groups="it_management.group_it_technical,it_management.group_it_supporter"/>
-								<field name="kpi" groups="it_management.group_it_technical,it_management.group_it_supporter"/>
+								<field name="date_done" readonly="1" />
+								<label for="count_down" />
+								<div>
+									<field name="count_down"
+									groups="it_management.group_it_technical,it_management.group_it_supporter" /> minutes
+								</div>
+								
+								<label for="remaining_time" />
+								<div>
+									<field name="remaining_time" readonly="1"></field> minutes
+								</div>
+								<field name="is_over" readonly="1"></field>
+								<field name="kpi"
+									groups="it_management.group_it_technical,it_management.group_it_supporter"
+									attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
 							</group>
 						</group>
 						<separator string="Description" />
-						<field name="description" />
+						<field name="description"
+							attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
 						<separator string="Feedback"></separator>
-						<field name="feedback" />
+						<field name="feedback"
+							attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
 						<notebook>
 							<page string="Comment">
 								<group>
-									<field name="comment_ids" nolabel="1">
+									<field name="comment_ids" nolabel="1"
+										attrs="{'readonly': [('state', 'in', ['close','cancel'])]}">
 										<tree default_order="create_date desc">
 											<field name="create_date" />
 											<field name="create_uid" />
@@ -97,7 +124,10 @@
 												</group>
 												<group>
 													<field name="create_uid" />
-													<field name="time_spent" required="1" />
+													<label for="time_spent" />
+													<div>
+														<field name="time_spent" required="1" class="oe_inline" widget="float_time"/> hours
+													</div>
 												</group>
 											</group>
 											<group>

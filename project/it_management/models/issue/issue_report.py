@@ -38,7 +38,7 @@ class IssueReport(models.Model):
         string="Current",
         track_visibility='onchange',
         comodel_name="product.product",
-        required=True)        
+        required=True)
     summary = fields.Char(
         string="Summary",
         track_visibility='onchange',
@@ -51,6 +51,7 @@ class IssueReport(models.Model):
     date_done = fields.Datetime(
         string="Completed Date",
         track_visibility='onchange')
+
     description = fields.Html(
         string="Description",
         track_visibility='onchange',)
@@ -65,13 +66,18 @@ class IssueReport(models.Model):
         default=lambda self: self.env.uid,
         readonly=True)
     count_down = fields.Float(
-        string="Count Down",
-        compute="_compute_count_down",
-        track_visibility='onchange', store=True)
+        string="Real Duration",
+        compute="_compute_real_duration",
+        track_visibility='onchange')
+    remaining_time = fields.Integer('Remaining Time',
+                                    compute="_compute_real_duration")
+    is_over = fields.Boolean(string='Is Over Time',
+                             compute="_compute_real_duration")
     feedback = fields.Html(
         string="Feedback",
         track_visibility='onchange',)
-    state = fields.Selection(RP_ISSUE_STATES,
+    state = fields.Selection(
+        RP_ISSUE_STATES,
         string='Status',
         track_visibility='onchange',
         default='draft')
@@ -88,19 +94,28 @@ class IssueReport(models.Model):
         comodel_name="res.partner.department")
 
     @api.multi
-    def _compute_count_down(self):
+    def _compute_real_duration(self):
         countdown = self._get_count_down_time()
         for r in self:
             val = 0.0
             if r.create_date:
-                n = fields.Datetime.now()
-                n = fields.Datetime.from_string(n)
+                if r.state == 'cancel':
+                    r.count_down = 0
+                    continue
+                elif r.state in ['confirm', 'close']:
+                    n = fields.Datetime.from_string(r.date_done)
+                else:
+                    n = fields.Datetime.now()
+                    n = fields.Datetime.from_string(n)
                 c = fields.Datetime.from_string(r.create_date)
                 diff = n - c
                 secs = diff.total_seconds()
                 mins = int(secs/60)
-                val = countdown - mins
-            r.count_down = val > 0.0 and val or 0.0
+                estimated_time = int(r.estimated_time*60)
+                val = countdown - mins + estimated_time
+                r.remaining_time = val
+                r.is_over = val < 0 and True or False
+            r.count_down = mins
 
     @api.model
     def _get_count_down_time(self):
@@ -129,12 +144,15 @@ class IssueReport(models.Model):
             mobiles = mobile_str.split(';')
             for mobile in mobiles:
                 mobile = mobile.strip()
+                if not mobile or mobile == '0':
+                    continue
                 vals = {'sms_template_id': sms_tmpl.id,
                         'mobile_phone': mobile,
-                        'message': u'[{}] {} (KH: {})'.format(res.name,
-                                                              res.summary,
-                                                              res.partner_id.name
-                                                              )}
+                        'message': u'[{}] {} (KH: {})'.format(
+                            res.name,
+                            res.summary,
+                            res.partner_id.name
+                              )}
                 sms = self.env['sms.sms'].create(vals)
                 sms.button_send()
         return res
@@ -188,6 +206,7 @@ class IssueReport(models.Model):
         for r in self:
             if r.state in ('fix',):
                 r.state = 'confirm'
+                r.date_done = fields.Datetime.now()
 
     @api.multi
     def action_close(self):
