@@ -17,7 +17,7 @@
 
 		<record id="product_user_rule" model="ir.rule">
 			<field name="name">IT User > Product</field>
-			<field ref="model_product_product" name="model_id" />
+			<field ref="product.model_product_product" name="model_id" />
 			<field name="domain_force">["|",('partner_id','=', False),('partner_id', '=', user.partner_id.id)]</field>
 			<field name="groups" eval="[(4, ref('it_management.group_it_user_limit'))]" />
 		</record>
