@@ -74,5 +74,22 @@
 	        <field name="category_id" ref="4leaf_base.group_category_profile"/>
 	        <field name="implied_ids" eval="[(4, ref('base.group_system')), (4, ref('it_management.group_it_access_network')), (4, ref('base.group_user')), (4, ref('it_management.group_it_supporter')), (4, ref('it_management.group_it_supporter_limit'))]"/>
 	    </record>
+
+
+        <!-- IT Security Admin -->
+	    <record id="group_it_security_admin" model="res.groups">
+	        <field name="name">Security Admin</field>
+	        <field name="category_id" ref="it_management.group_category_it"/>
+	        <field name="users" eval="[(4, ref('base.user_root'))]" />
+	    </record>
+	    <record id="group_it_security_admin_limit" model="res.groups">
+	        <field name="name">IT Security Admin Limit</field>
+	        <field name="category_id" ref="4leaf_base.group_category_limit"/>
+	    </record>
+	    <record id="group_it_security_admin_profile" model="res.groups">
+	        <field name="name">IT Security Admin Profile</field>
+	        <field name="category_id" ref="4leaf_base.group_category_profile"/>
+	        <field name="implied_ids" eval="[(4, ref('base.group_system')), (4, ref('base.group_user')), (4, ref('it_management.group_it_security_admin')), (4, ref('it_management.group_it_security_admin_limit'))]"/>
+	    </record>	    
     </data>
 </odoo>

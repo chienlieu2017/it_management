@@ -2,6 +2,9 @@
 <odoo>
 	<data>
 
+		<menuitem id="menu_user_root" name="Users" groups="group_it_security_admin"
+			action="base.action_res_users"/>
+
 		<menuitem id="sms_menu_root" name="SMS" groups="group_it_sms"/>
 
 		<menuitem id="sms_sub_menu" parent="sms_menu_root" name="SMS"
