@@ -5,9 +5,15 @@
 		<template id="login_layout_inherit" name="Login Layout"
 			inherit_id="web.login_layout" customize_show="True">
 			<xpath expr="//img" position="replace">
-				<img src="/it_management/static/src/img/logo.png" />
+				<img style="width:200px;" src="/it_management/static/src/img/logo.png" />
 			</xpath>
-		</template>
+			<xpath expr="//a[@href='https://www.odoo.com']" position="replace">
+				<!-- REMOVE POWER BY ODOO -->
+			</xpath>
+			<xpath expr="//a[@href='/web/database/manager']" position="replace">
+				<!-- REMOVE DATABASE MANAGER -->
+			</xpath>
+			</template>
 
 		<template id="menu_secondary_inherit" name="Remove Power By"
 			inherit_id="web.menu_secondary" customize_show="True">

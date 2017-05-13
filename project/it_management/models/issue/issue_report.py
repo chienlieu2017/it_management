@@ -104,6 +104,9 @@ class IssueReport(models.Model):
                     continue
                 elif r.state in ['confirm', 'close']:
                     n = fields.Datetime.from_string(r.date_done)
+                    if not n:
+                        n = fields.Datetime.now()
+                        n = fields.Datetime.from_string(n)
                 else:
                     n = fields.Datetime.now()
                     n = fields.Datetime.from_string(n)
