@@ -2,7 +2,7 @@
 <odoo>
 	<data>
 		<report id="monthly_issue_report_xlsx" model="monthly.report"
-			string="Monthly Issue Report" report_type="xlsx" menu="False"
+			string="Báo cáo lỗi phát sinh trong tháng" report_type="xlsx" menu="False"
 			name="monthly_issue_report_xlsx" file="monthly_issue_report_xlsx" />
 
 	</data>

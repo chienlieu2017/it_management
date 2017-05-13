@@ -11,5 +11,15 @@
 	        <field name="function" eval="'_send_issue_statistics'"/>
 	        <field name="args" eval="'()'" />
 	    </record>
+		<record id="send_monthly_notify_cron" model="ir.cron">
+	        <field name="name">Monthly Issue Report</field>
+	        <field name="interval_number">1</field>
+	        <field name="interval_type">months</field>
+	        <field name="numbercall">-1</field>
+	        <field name="doall" eval="False"/>
+	        <field name="model">monthly.report</field>
+	        <field name="function" eval="'_send_monthly_report'"/>
+	        <field name="args" eval="'()'" />
+	    </record>	    
 	</data>
 </odoo>

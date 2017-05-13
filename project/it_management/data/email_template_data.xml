@@ -8,21 +8,21 @@
             <field name="model_id" ref="it_management.model_issue_report"/>
             <field name="email_from">${user.email or ''}</field>
             <field name="email_to">${object.assignee_id.email or ''}</field>
-            <field name="subject">Issue ${object.name} is assigned to you</field>
+            <field name="subject">Lỗi ${object.name} được giao cho bạn</field>
             <field name="auto_delete" eval="True"/>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
-    <p>Hello${object.assignee_id.name and ' ' or ''}${object.assignee_id.name or ''},</p>
+    <p>Xin chào${object.assignee_id.name and ' ' or ''}${object.assignee_id.name or ''},</p>
     
-    <p>There is an issue assigned to you: </p>
+    <p>Lỗi này được giao cho bạn để xử lý: </p>
     
     <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
-       &nbsp;&nbsp;<strong>REFERENCES</strong><br />
-       &nbsp;&nbsp;Reference: <strong>${object.name}</strong><br />
-       &nbsp;&nbsp;Customer: <strong>${object.partner_id.name}</strong><br />
-       &nbsp;&nbsp;Estimated Time: ${object.estimated_time}<br />
-       &nbsp;&nbsp;Summary: <strong>${object.summary}</strong><br />
+       &nbsp;&nbsp;<strong>Chi tiết</strong><br />
+       &nbsp;&nbsp;Mã tham chiếu: <strong>${object.name}</strong><br />
+       &nbsp;&nbsp;Khách hàng: <strong>${object.partner_id.name}</strong><br />
+       &nbsp;&nbsp;Thời gian ước lượng: ${object.estimated_time}<br />
+       &nbsp;&nbsp;Tóm tắt nội dung: <strong>${object.summary}</strong><br />
     </p>
 </div>
 			]]></field>
@@ -35,16 +35,16 @@
             <field name="model_id" ref="base.model_res_users"/>
             <field name="email_from">${user.email or ''}</field>
             <field name="email_to">${user.env['issue.report'].get_daily_report_recipient() or ''}</field>
-            <field name="subject">[Notification] Daily Issue Report</field>
+            <field name="subject">[Notification] Báo cáo thống kê lỗi</field>
             <field name="auto_delete" eval="True"/>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: medium; color: rgb(34, 34, 34); background-color: #FFF; ">
 
-    <p>Hello,</p>
+    <p>Xin chào,</p>
     
-    <p>Here are some statistics on report issue: </p>
+    <p>Đây là bảng thống kê các báo cáo lỗi: </p>
     
-    <p>Daily Statistics: </p>
+    <p>Thông kê theo ngày: </p>
     
     <style>
     .table {
@@ -84,7 +84,7 @@
         </tbody>
     </table>
 
-    <p>Monthly Statistics: </p>
+    <p>Thống kê theo tháng: </p>
     
     <table class="table table-bordered" style="width:600px;">
         <thead>
@@ -109,6 +109,28 @@
     </table>    
 </div>
 			]]></field>
+        </record>
+
+        <!-- Email template monthly report -->
+        <record id="email_template_issue_report_monthly" model="mail.template">
+            <field name="name">Monthly Issue Report</field>
+            <field name="model_id" ref="it_management.model_monthly_report"/>
+            <field name="email_from">${user.email or ''}</field>
+            <field name="email_to">${object.customer_id.email or ''}</field>
+            <field name="subject">Báo cáo hàng tháng cho khách hàng ${object.customer_id.name}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Xin chào ${object.customer_id.name or ''},</p>
+    
+    <p>Xin gửi đến bạn thông tin báo cáo của tháng ${object.get_date_data['period'] or ''}: </p>
+    <p>(Vui lòng xem file đính kèm)</p>
+    
+    <p>Trân trọng,</p>
+</div>
+			]]></field>
+			<field name="report_template_ids" eval="[(6, 0, [ref('it_management.monthly_issue_report_xlsx'), ref('it_management.monthly_data_access_right_report'), ref('it_management.monthly_device_report')])]"/>
         </record>        
     </data>
 </odoo>

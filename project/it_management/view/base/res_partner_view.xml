@@ -11,6 +11,7 @@
 					<field name="supporter_id" placeholder="Supporter" />
 				</field>
 				<field name="function" position="before">
+					<field name="send_monthly_report" />
  					<field name="department_id" />
  				</field>
 				<xpath expr="//notebook" position="inside">
