@@ -158,3 +158,33 @@ class MonthlyReport(models.TransientModel):
         ctx = self._context
         if ctx.get('report_template'):
             return self.env['report'].get_action(self, ctx['report_template'])
+
+    @api.model
+    def _send_monthly_report(self):
+        partners = self.env['res.partner'].search([('send_monthly_report', '=',
+                                                    True),
+                                                   ('customer', '=', True)])
+        if not partners:
+            return False
+        Network = self.env['network.map']
+        Attachement = self.env['ir.attachment']
+        tday = fields.Datetime.context_timestamp(self, datetime.now())
+        vals = {'month_nb': int(tday.strftime('%m')) - 1,
+                'year_nb': int(tday.strftime('%Y')),
+                'customer_id': None}
+        mail_tmpl = \
+            self.env.ref('it_management.email_template_issue_report_monthly')
+        for p in partners:
+            vals.update({'customer_id': p.id})
+            new_r = self.create(vals)
+            new_mail_id = mail_tmpl.send_mail(new_r.id)
+            new_mail = self.env['mail.mail'].browse(new_mail_id)
+            # search network
+            network = Network.search([('partner_id', '=', p.id)], limit=1)
+            if network:
+                attachments = Attachement.search([('res_model', '=',
+                                                   'network.map'),
+                                                  ('res_id', '=', network.id)])
+                if attachments:
+                    new_mail.attachment_ids += attachments
+            new_mail.send()

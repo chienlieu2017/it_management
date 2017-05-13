@@ -105,7 +105,7 @@
 			</t>
 		</template>
 
-		<report id='monthly_device_report' string='Monthly Device Report'
+		<report id='monthly_device_report' string='Báo cáo Device / Software hàng tháng'
 			model='monthly.report' report_type='qweb-pdf' menu='True'
 			file='it_management.monthly_device_report_template' name='it_management.monthly_device_report_template' />
 

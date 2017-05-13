@@ -19,3 +19,5 @@ class ResPartner(models.Model):
     department_id = fields.Many2one(
         string="Department",
         comodel_name="res.partner.department")
+    send_monthly_report = fields.Boolean('Send monthly report?',
+                                         default=True)

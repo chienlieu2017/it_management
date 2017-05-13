@@ -109,7 +109,7 @@
 			</t>
 		</template>
 
-		<report id='monthly_data_access_right_report' string='Monthly Data Right Access Report'
+		<report id='monthly_data_access_right_report' string='Báo cáo truy cập dữ liệu hàng tháng'
 			model='monthly.report' report_type='qweb-pdf' menu='True'
 			file='it_management.monthly_data_access_right_report_template' name='it_management.monthly_data_access_right_report_template' />
 
