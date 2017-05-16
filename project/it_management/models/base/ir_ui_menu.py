@@ -20,7 +20,6 @@ class IrUiMenu(models.Model):
         """
         current_user = self.env.user
         res = super(IrUiMenu, self)._visible_menu_ids(debug)
-        print '=================res: ', res
 
         # ignore SUPERUSER
         if self.env.uid != SUPERUSER_ID:
@@ -32,7 +31,16 @@ class IrUiMenu(models.Model):
                     self.env.ref('base.menu_management').id,
                     self.env.ref('base.menu_administration').id,
                 ]
-            print '==========menu_to_hide_ids: ', menu_to_hide_ids
-
+            elif current_user.has_group('it_management.group_it_user_limit'):
+                menu_to_hide_ids = [
+                    self.env.ref('mail.mail_channel_menu_root_chat').id,
+                    self.env.ref('it_management.network_menu_root').id,
+                    self.env.ref('it_management.report_issue_menu_sub_report').id,
+                ]
+            elif current_user.has_group('it_management.group_it_supporter_limit'):
+                menu_to_hide_ids = [
+                    self.env.ref('base.menu_management').id,
+                    self.env.ref('base.menu_administration').id,
+                ]                
             res = res - set(menu_to_hide_ids)
         return res
