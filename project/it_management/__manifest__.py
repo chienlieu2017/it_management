@@ -17,7 +17,9 @@ IT Management Module
         'mrp',
         'document',
         'report_xlsx',
-        '4leaf_base'
+        '4leaf_base',
+        'base',
+        'web',
     ],
     'data': [
         # ============================================================
@@ -31,7 +33,7 @@ IT Management Module
         # DATA
         # ============================================================
         # 'data/',
-        'data/email_template_data.xml',
+        
         'data/product_category_data.xml',
         'data/ir_cron_data.xml',
         'data/res_company_data.xml',
@@ -74,6 +76,7 @@ IT Management Module
         # ============================================================
         # 'menu/',
         'menu/menu_view.xml',
+        'data/email_template_data.xml',
         # ============================================================
         # FUNCTION USED TO UPDATE DATA LIKE POST OBJECT
         # ============================================================
@@ -84,7 +87,7 @@ IT Management Module
     'demo': [],
     'qweb': [
         'static/src/xml/web_dialog_size.xml',
-        'view/base_view.xml',
+        'view/base/base_view.xml',
     ],
     'installable': True,
     'active': False,

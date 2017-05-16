@@ -36,11 +36,13 @@ class IrUiMenu(models.Model):
                     self.env.ref('mail.mail_channel_menu_root_chat').id,
                     self.env.ref('it_management.network_menu_root').id,
                     self.env.ref('it_management.report_issue_menu_sub_report').id,
+                    self.env.ref('it_management.report_issue_menu_customer').id,
+                    self.env.ref('it_management.report_issue_menu_product').id,
                 ]
             elif current_user.has_group('it_management.group_it_supporter_limit'):
                 menu_to_hide_ids = [
                     self.env.ref('base.menu_management').id,
                     self.env.ref('base.menu_administration').id,
-                ]                
+                ]
             res = res - set(menu_to_hide_ids)
         return res

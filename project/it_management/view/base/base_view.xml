@@ -3,7 +3,13 @@
 
 	<!-- Remove menu about user -->
 	<t t-extend="UserMenu">
-		<t t-jquery="a[data-menu='about']">
+		<t t-jquery="a[data-menu='account']">
+			this.parent().remove();
+		</t>
+		<t t-jquery="a[data-menu='documentation']">
+			this.parent().remove();
+		</t>
+		<t t-jquery="a[data-menu='support']">
 			this.parent().remove();
 		</t>
 	</t>

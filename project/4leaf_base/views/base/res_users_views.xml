@@ -8,8 +8,7 @@
 			<field name="inherit_id" ref="base.view_users_form" />
 			<field name="arch" type="xml">
 				<field name="partner_id" position="after">
-					<field name="profile_id" groups="base.group_no_one"
-						domain="[('category_id.name', '=', 'Profiles')]"/>
+					<field name="profile_id" domain="[('category_id.name', '=', 'Profiles')]"/>
 				</field>
 			</field>
 		</record>

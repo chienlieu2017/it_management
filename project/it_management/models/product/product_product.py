@@ -4,6 +4,11 @@
 #    Copyright 2009-2017 4Leaf Team
 #
 ##############################################################################
-import product_template
-import product_category
-import product_software
+
+from odoo import fields, models
+
+
+class ProductProduct(models.Model):
+    _inherit = "product.product"
+
+    
