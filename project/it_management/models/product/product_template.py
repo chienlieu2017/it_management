@@ -20,4 +20,5 @@ class ProductTemplate(models.Model):
     categ_type = fields.Selection([('hardware', 'Hardware'),
                                    ('software', 'Software')],
                                   string="Current Type",
-                                  related="categ_id.categ_type")
+                                  related="categ_id.categ_type",
+                                  store=True)

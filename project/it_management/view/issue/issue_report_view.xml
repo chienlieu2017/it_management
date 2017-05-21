@@ -39,9 +39,9 @@
 							groups="it_management.group_it_technical,it_management.group_it_supporter"
 							type="object" />
 						<button name="action_confirm" states="fix" string="Confirm"
-							class="oe_highlight" type="object" />
+							class="oe_highlight" type="object" groups="it_management.group_it_user_limit"/>
 						<button name="action_close" states="confirm" string="Close"
-							groups="it_management.group_it_user,it_management.group_it_supporter"
+							groups="it_management.group_it_supporter"
 							class="oe_highlight" type="object" />
 						<button name="action_reopen" states="close" string="Re-open"
 							type="object" />

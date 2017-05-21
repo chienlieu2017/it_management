@@ -14,6 +14,18 @@
 		</t>
 	</t>
 
+	<t t-extend="mail.chat.InboxItem">
+		<t t-jquery="a">
+			this.parent().remove();
+		</t>
+	</t>
+
+	<t t-extend="mail.chat.MessagingMenu">
+		<t t-jquery="a">
+			this.parent().remove();
+		</t>
+	</t>
+
 	<!-- Remove Enterprise Linsence -->
 	<t t-extend="DashboardEnterprise">
 		<t t-jquery="div[class='text-center o_web_settings_dashboard_enterprise']">

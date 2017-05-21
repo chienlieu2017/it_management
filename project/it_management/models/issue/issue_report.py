@@ -127,6 +127,23 @@ class IssueReport(models.Model):
         countdown = countdown and float(countdown) or 0.0
         return countdown
 
+    @api.multi
+    def _send_sms_message(self, issues, mobiles, template_id=1):
+        for issue in issues:
+            for mobile in mobiles:
+                mobile = mobile.strip()
+                if not mobile or mobile == '0':
+                    continue
+                vals = {'sms_template_id': template_id,
+                        'mobile_phone': mobile,
+                        'message': u'[{}] {} (KH: {})'.format(
+                            issue.name,
+                            issue.summary,
+                            issue.partner_id.name
+                              )}
+                sms = self.env['sms.sms'].create(vals)
+                sms.button_send()
+
     @api.model
     def create(self, vals):
         next_sequence = self.env['ir.sequence'].next_by_code('ISS')
@@ -145,19 +162,12 @@ class IssueReport(models.Model):
                 return res
             sms_tmpl = self.env.ref('it_management.sms_template_default')
             mobiles = mobile_str.split(';')
-            for mobile in mobiles:
-                mobile = mobile.strip()
-                if not mobile or mobile == '0':
-                    continue
-                vals = {'sms_template_id': sms_tmpl.id,
-                        'mobile_phone': mobile,
-                        'message': u'[{}] {} (KH: {})'.format(
-                            res.name,
-                            res.summary,
-                            res.partner_id.name
-                              )}
-                sms = self.env['sms.sms'].create(vals)
-                sms.button_send()
+            # get supporter mobile
+            if vals.get('assignee_id', False):
+                assignee = self.env['res.users'].browse(vals.get(
+                    'assignee_id', False))
+                mobiles.append(assignee.partner_id.mobile)
+                self._send_sms_message(res, mobiles, template_id=sms_tmpl.id)
         return res
 
     @api.onchange('partner_id')

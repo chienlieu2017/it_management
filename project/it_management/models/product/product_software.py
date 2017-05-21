@@ -17,7 +17,7 @@ class ProductCategory(models.Model):
     product_template_id = fields.Many2one(
         'product.template', 'Product Template')
     product_id = fields.Many2one(
-        'product.product', 'Software',
-        domain="[('categ_id.categ_type', '=', 'software')]")
+        'product.product', 'Software')
+    lisence_key = fields.Char('Lisence Key')
     expiration_date = fields.Date('Expiration Date')
     notes = fields.Char('Notes')
