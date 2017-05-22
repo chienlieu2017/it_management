@@ -131,9 +131,9 @@ class IssueReport(models.Model):
     def _send_sms_message(self, issues, mobiles, template_id=1):
         for issue in issues:
             for mobile in mobiles:
-                mobile = mobile.strip()
                 if not mobile or mobile == '0':
                     continue
+                mobile = mobile.strip()
                 vals = {'sms_template_id': template_id,
                         'mobile_phone': mobile,
                         'message': u'[{}] {} (KH: {})'.format(

@@ -104,7 +104,7 @@
 							attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
 						<separator string="Feedback"></separator>
 						<field name="feedback"
-							attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" />
+							attrs="{'readonly': [('state', 'in', ['close','cancel'])]}" groups="it_management.group_it_user_limit"/>
 						<notebook>
 							<page string="Comment">
 								<group>
