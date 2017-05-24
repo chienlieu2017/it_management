@@ -17,11 +17,17 @@ IT Management Module
         'mrp',
         'document',
         'report_xlsx',
-        '4leaf_base'
+        '4leaf_base',
+        'base',
+        'web',
+        'im_livechat',
+        'mail',
     ],
     'data': [
         # ============================================================
         # SECURITY SETTING - GROUP - PROFILE
+        'view/base/web_template.xml',
+        'view/base/qweb.xml',
         # ============================================================
         # 'security/',
         'security/res_groups_data.xml',
@@ -31,7 +37,7 @@ IT Management Module
         # DATA
         # ============================================================
         # 'data/',
-        'data/email_template_data.xml',
+        
         'data/product_category_data.xml',
         'data/ir_cron_data.xml',
         'data/res_company_data.xml',
@@ -67,13 +73,13 @@ IT Management Module
         'view/contract/partner_contract_view.xml',
         'view/product/product_template_view.xml',
         'view/product/product_category_view.xml',
-        'view/base/web_template.xml',
-        'view/base/qweb.xml',
+        
         # ============================================================
         # MENU
         # ============================================================
         # 'menu/',
         'menu/menu_view.xml',
+        'data/email_template_data.xml',
         # ============================================================
         # FUNCTION USED TO UPDATE DATA LIKE POST OBJECT
         # ============================================================
@@ -84,7 +90,7 @@ IT Management Module
     'demo': [],
     'qweb': [
         'static/src/xml/web_dialog_size.xml',
-        'view/base_view.xml',
+        'view/base/base_view.xml',
     ],
     'installable': True,
     'active': False,
