@@ -5,7 +5,4 @@
 #
 ##############################################################################
 
-import models
-import report
-import controller
-import wizards
+import import_product_wizard

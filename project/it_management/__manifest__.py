@@ -44,9 +44,11 @@ IT Management Module
         'data/ir_config_parameter_data.xml',
         'data/ir_sequence_data.xml',
         'data/sms_template_data.xml',
+
         # WIZARD
         # ============================================================
-        # 'wizard/',
+        'wizards/import_product_wizard_view.xml',
+
         # REPORT
         # ============================================================
         # 'report/',
