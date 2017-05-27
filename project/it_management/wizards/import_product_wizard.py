@@ -172,7 +172,6 @@ class ImportProductWizard(models.Model):
             FROM product_attribute_value
             WHERE name IN %s
             '''
-            print '============sql: ', sql
             self._cr.execute(sql, (tuple(attr_values), ))
             data = self._cr.fetchall()
             for r in data:

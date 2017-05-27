@@ -24,6 +24,7 @@
 		<record id="sequence_product_template_default_code" model="ir.sequence">
 			<field name="name">Template Default Code</field>
 			<field name="code">T Default Code</field>
+			<field name="prefix">IT</field>
 			<field eval="9" name="padding" />
 			<field eval="1" name="number_next" />
 			<field eval="1" name="number_increment" />
