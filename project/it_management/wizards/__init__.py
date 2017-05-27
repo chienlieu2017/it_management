@@ -6,3 +6,4 @@
 ##############################################################################
 
 import import_product_wizard
+import import_software_info_wizard

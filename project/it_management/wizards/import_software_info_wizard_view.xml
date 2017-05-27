@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="import_software_info_wizard" model="ir.ui.view">
+            <field name="name">Import Products</field>
+            <field name="model">import.software.info.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Import Software Info">
+                	<div>
+                	</div>
+                	<group>
+                		<group>
+                			<field name="data_file"/>
+                			<field name="template_file_name" invisible="1"/>
+                			<field name="template_file" invisible="1" readonly="1" filename="template_file_name"/>
+                		</group>
+                	</group>
+                	<group attrs="{'invisible':[('error_file','=',False)]}">
+                		<field name="error_file_name" invisible="1" />
+                		<span style='color:red'>Errors occured during the import!</span>
+                		<field name="error_file" filename="error_file_name" nolabel="1"/>
+                	</group>
+                	<footer>
+	                	<button string="Import" name="action_import" class="oe_highlight" type="object" 
+								help="Upload your backup file in the field File to import."/>
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+                </form>
+            </field>
+        </record>
+   		<record id="action_import_software_info" model="ir.actions.act_window">
+			<field name="name">Import Software Info</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">import.software.info.wizard</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem id="menu_import_software_info" name="Import Software Info"
+			action="action_import_software_info"
+			parent="stock.menu_product_in_config_stock" sequence="101" />
+</odoo>

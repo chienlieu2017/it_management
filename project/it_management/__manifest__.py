@@ -48,6 +48,7 @@ IT Management Module
         # WIZARD
         # ============================================================
         'wizards/import_product_wizard_view.xml',
+        'wizards/import_software_info_wizard_view.xml',
 
         # REPORT
         # ============================================================
