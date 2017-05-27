@@ -5,7 +5,7 @@
 #
 ##############################################################################
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ProductTemplate(models.Model):
@@ -22,3 +22,13 @@ class ProductTemplate(models.Model):
                                   string="Current Type",
                                   related="categ_id.categ_type",
                                   store=True)
+
+    @api.model
+    def create(self, vals):
+        if not vals.get('default_code'):
+            next_sequence = self.env['ir.sequence'
+                                     ].next_by_code('T Default Code')
+            vals.update({'default_code': next_sequence})
+        print '======vals: ', vals
+        res = super(ProductTemplate, self).create(vals)
+        return res
