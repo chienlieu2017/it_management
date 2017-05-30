@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id='monthly_issue_pdf_report_template'>
+			<t t-call='report.html_container'>
+				<t t-foreach='docs' t-as='o'>
+					<div class="page" style="font-size:16px; text-align: center;">
+						<!-- BODY -->
+						<div class="row">
+							<img width="100%"
+								src="/it_management/static/src/img/report_header.png" />
+						</div>
+						<div class="row">
+							<b>
+								<h2>
+									<span t-esc="'MONTHLY ISSUE REPORT'" />
+								</h2>
+							</b>
+						</div>
+						<t t-set="customer_info" t-value="o.get_monthly_data_header()" />
+						<div class="text-left" style="">
+							<ul style="list-style-type: none;">
+								<li>
+									Customer name:
+									<span t-esc="customer_info['customer_name']" />
+								</li>
+
+								<li>
+									Phone:
+									<span t-esc="customer_info['phone']" />
+								</li>
+								<li>
+									Email:
+									<span t-esc="customer_info['email']" />
+								</li>
+								<li>
+									Time:
+									<span
+										t-esc="' from {} to {}'.format(customer_info['from_date'], customer_info['to_date'])" />
+								</li>
+							</ul>
+						</div>
+						<t t-set="datas" t-value="o.get_monthly_issue_report_datas()" />
+						<div>
+							<table class="table table-bordered" style="border-color:black;">
+								<thead class="">
+									<tr>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="10%">WORKING STATION BỘ PHẬN</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="10%">CURRENT # SỐ MÁY</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="8%">USER / NGƯỜI DÙNG</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="8%"> ASSIGNEE / NV BẢO TRÌ</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="8%"> DATE</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="8%">REASON SOFTWARE</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="8%">REASON HARDWARE</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="8%">SOLUTION SOFTWARE</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="8%">SOLUTION HARDWARE</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="8%">TIME SPEND (HOUR)</th>
+										<th class="text-center" style="border-color:black; background-color: #84C8DE;"
+											width="8%">STATUS</th>
+										<th style="border-color:black; background-color: #84C8DE;"
+											width="8%">NOTE</th>
+										</tr>
+									</thead>
+									<tbody>
+									<t t-foreach="datas" t-as="line" style="text-align: left;">
+										<tr>
+											<t t-foreach="line" t-as="column" style="text-align: left;">
+												<td> <t t-esc="column"></t></td>
+											</t>
+										</tr>
+									</t>
+									</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="footer">
+						<div class="text-center">
+							<img width="100%"
+								src="/it_management/static/src/img/report_footer.png" />
+						</div>
+					</div>
+				</t>
+			</t>
+		</template>
+
+		<report id='monthly_report_issue_report' string='Báo cáo Report Issue hàng tháng'
+			model='monthly.report' report_type='qweb-pdf' menu='True'
+			file='it_management.monthly_issue_pdf_report_template' name='it_management.monthly_issue_pdf_report_template' />
+
+		<record id='monthly_report_issue_report' model='ir.actions.report.xml'>
+			<field name='paperformat_id' ref='it_management.it_custom_paper_a3' />
+		</record>
+
+	</data>
+</openerp>

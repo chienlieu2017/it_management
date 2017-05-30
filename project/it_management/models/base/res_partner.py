@@ -20,4 +20,4 @@ class ResPartner(models.Model):
         string="Department",
         comodel_name="res.partner.department")
     send_monthly_report = fields.Boolean('Send monthly report?',
-                                         default=True)
+                                         default=False)

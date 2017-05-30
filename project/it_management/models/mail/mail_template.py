@@ -100,7 +100,7 @@ class MailTemplate(models.Model):
                             result, format = Template.env['report'].get_pdf([res_id], report_service), 'pdf'
                         else:
                             result, format = odoo_report.render_report(self._cr, self._uid, [res_id], report_service, {'model': template.model}, Template._context)
-    
+
                         # TODO in trunk, change return format to binary to match message_post expected format
                         result = base64.b64encode(result)
                         if not report_name:

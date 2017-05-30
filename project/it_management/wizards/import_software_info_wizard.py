@@ -56,8 +56,18 @@ class ImportSoftwareInfoWizard(models.Model):
                     'template_file_name': 'Device - software Template.xlsx'})
         return res
 
+    def _is_number(self, number):
+        try:
+            int(number)
+        except ValueError:
+            return False
+        else:
+            return True
+
     def clear_str(self, val):
-        if isinstance(val, (str, unicode)):
+        if self._is_number(val):
+            val = str(val)
+        elif isinstance(val, (str, unicode)):
             val = val.strip()
         return val
 

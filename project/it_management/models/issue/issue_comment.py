@@ -24,7 +24,7 @@ class IssueComment(models.Model):
         default=lambda self: self.env.uid)
     time_spent = fields.Float(
         string="Time spent")
-    solution = fields.Html(
+    solution = fields.Text(
         string="Solution")
     issue_id = fields.Many2one(
         string="Report Issue",

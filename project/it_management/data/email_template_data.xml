@@ -130,7 +130,7 @@
     <p>Trân trọng,</p>
 </div>
 			]]></field>
-			<field name="report_template_ids" eval="[(6, 0, [ref('it_management.monthly_issue_report_xlsx'), ref('it_management.monthly_data_access_right_report'), ref('it_management.monthly_device_report')])]"/>
-        </record>        
+			<field name="report_template_ids" eval="[(6, 0, [ref('it_management.monthly_report_issue_report'), ref('it_management.monthly_data_access_right_report'), ref('it_management.monthly_device_report')])]"/>
+        </record>
     </data>
 </odoo>

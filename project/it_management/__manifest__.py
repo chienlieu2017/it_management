@@ -37,7 +37,7 @@ IT Management Module
         # DATA
         # ============================================================
         # 'data/',
-        
+
         'data/product_category_data.xml',
         'data/ir_cron_data.xml',
         'data/res_company_data.xml',
@@ -57,6 +57,7 @@ IT Management Module
         'report/monthly_data_access_right_report.xml',
         'report/monthly_device_report.xml',
         'report/monthly_issue_report_xlsx.xml',
+        'report/monthly_issue_report_pdf.xml',
         # ============================================================
         # VIEWS
         # ============================================================

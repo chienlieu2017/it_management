@@ -171,5 +171,17 @@
 		<menuitem id="network_sub_menu_report_month_data_right" parent="network_sub_menu_report"
 			name="Monthly Data Access Right" action="month_data_access_right_report_window_act" />
 
+		<record id="month_report_issue_pdf_report_window_act" model="ir.actions.act_window">
+			<field name="name">Monthly Report Issue PDF</field>
+			<field name="res_model">monthly.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="context">{'report_template': 'it_management.monthly_issue_pdf_report_template'}</field>
+		</record>
+
+		<menuitem id="report_issue_pdf_menu_sub_report_monthly_device" parent="report_issue_menu_sub_report"
+			name="Monthly Report Issue PDF" action="month_report_issue_pdf_report_window_act" />
+
 	</data>
 </odoo>

@@ -29,6 +29,6 @@ class ProductTemplate(models.Model):
             next_sequence = self.env['ir.sequence'
                                      ].next_by_code('T Default Code')
             vals.update({'default_code': next_sequence})
-        print '======vals: ', vals
         res = super(ProductTemplate, self).create(vals)
         return res
+

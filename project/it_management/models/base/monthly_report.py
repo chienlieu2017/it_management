@@ -188,3 +188,63 @@ class MonthlyReport(models.TransientModel):
                 if attachments:
                     new_mail.attachment_ids += attachments
             new_mail.send()
+
+    def get_monthly_issue_report_datas(self):
+        date_data = self.get_date_data()
+        from_date = date_data['from_date']
+        to_date = date_data['to_date']
+        customer_id = self.customer_id.id
+        partner_domain = customer_id and \
+            'AND ir.partner_id = {}'.format(customer_id) or ''
+        sql = '''
+        SELECT rpd.name,
+            CASE WHEN pp.default_code ISNULL
+                THEN pt.name 
+                ELSE '['||pp.default_code||'] '||pt.name
+            END AS prod_name,
+            rp.name,
+            rp2.name,
+            ic.create_date,
+            CASE WHEN pc.categ_type = 'software'
+                THEN ic.reason
+                ELSE NULL
+            END AS task_software,
+            CASE WHEN pc.categ_type = 'hardware'
+                THEN ic.reason
+                ELSE NULL
+            END AS task_hardware,
+            CASE WHEN pc.categ_type = 'software'
+                THEN ic.solution
+                ELSE NULL
+            END AS solution_software,
+            CASE WHEN pc.categ_type = 'hardware'
+                THEN ic.solution
+                ELSE NULL
+            END AS solution_hardware,
+            COALESCE(ic.time_spent, 0.0) as time_spent,
+            ir.state,
+            ic.note
+        FROM issue_report ir
+        LEFT JOIN res_partner_department rpd
+            ON ir.department_id = rpd.id
+        LEFT JOIN product_product pp
+            ON ir.product_id = pp.id
+        LEFT JOIN product_template pt
+            ON pt.id = pp.product_tmpl_id
+        LEFT JOIN product_category pc
+            ON pc.id = pt.categ_id
+        LEFT JOIN res_partner rp
+            ON ir.partner_id = rp.id
+        LEFT JOIN issue_comment ic
+            ON ir.id = ic.issue_id
+        LEFT JOIN res_users ru
+            ON ic.create_uid = ru.id OR ir.assignee_id = ru.id
+        LEFT JOIN res_partner rp2
+            ON rp2.id = ru.partner_id
+        WHERE state != 'cancel'
+            AND ir.create_date BETWEEN '{0}' AND '{1}'
+            {2}
+        '''.format(from_date, to_date, partner_domain)
+        self.env.cr.execute(sql)
+        res = self.env.cr.fetchall()
+        return res

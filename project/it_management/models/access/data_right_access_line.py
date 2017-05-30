@@ -20,4 +20,4 @@ class DataRightAccessLine(models.Model):
     p_write = fields.Boolean('Write')
     p_create = fields.Boolean('Create')
     p_delete = fields.Boolean('Delete')
-    notes = fields.Char('Notes')
+    notes = fields.Text('Notes')

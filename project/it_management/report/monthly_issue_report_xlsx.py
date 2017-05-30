@@ -69,7 +69,7 @@ class MonthlyIssueReportXlsx(ReportXlsx):
         sheet.merge_range(r_idx, 3, r_idx + 2, 3, u'''
         ASSIGNEE
         NV BẢO TRÌ
-        ''', header_brown)        
+        ''', header_brown)
         sheet.merge_range(r_idx, 4, r_idx, 11, 
                           u'Tháng {}'.format(date_data.get('period')),
                           workbook.add_format({'border': 1, 'align': 'center',

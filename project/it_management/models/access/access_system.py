@@ -18,7 +18,7 @@ class AccessSystem(models.Model):
     local_ip = fields.Char('Local IP', required=True)
     login = fields.Char('Login', required=True)
     password = fields.Char('Password', required=True)
-    remark = fields.Char('Remark')
+    remark = fields.Text('Remark')
     type = fields.Selection([('server', 'Server'),
                              ('system', 'System')],
                             string="Type")

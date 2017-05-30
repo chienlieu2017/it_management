@@ -1,20 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright 2009-2016 Trobz (<http://trobz.com>).
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not see <http://www.gnu.org/licenses/>.
+#    Copyright 2009-2017 4Leaf Team
 #
 ##############################################################################
 
@@ -30,6 +17,7 @@ import xlrd
 import xlwt
 from odoo.modules.module import get_module_resource
 from odoo.exceptions import UserError
+from odoo.tools.translate import _
 
 
 class ImportProductWizard(models.Model):
@@ -52,6 +40,14 @@ class ImportProductWizard(models.Model):
         default="hardware",
         string="Device / Software ?")
 
+    def _is_number(self, number):
+        try:
+            int(number)
+        except ValueError:
+            return False
+        else:
+            return True
+
     @api.model
     def default_get(self, fs):
         res = super(ImportProductWizard, self).default_get(fs)
@@ -63,7 +59,10 @@ class ImportProductWizard(models.Model):
         return res
 
     def clear_str(self, val):
-        val = val.strip()
+        if self._is_number(val):
+            val = str(val)
+        elif isinstance(val, (str, unicode)):
+            val = val.strip()
         return val
 
     @api.multi
@@ -113,7 +112,7 @@ class ImportProductWizard(models.Model):
             if line['ref'] and line['ref'] not in refs:
                 refs.append(line['ref'])
             if line['user_name'] and line['user_name'] not in user_names:
-                user_names.append(line['user_name'])                
+                user_names.append(line['user_name'])
 
             attrs_data = {}
             for _idx in range(attrs_idx, cols):
@@ -198,7 +197,8 @@ class ImportProductWizard(models.Model):
                 else:
                     # Create new one
                     u_vals = {'name': line['user_name'],
-                              'parent_id': self.company_id.id}
+                              'parent_id': self.company_id.id
+                              }
                     n_user = self.env['res.partner'].create(u_vals)
                     vals.update({'contact_partner_id': n_user.id})
                     # Update caches
